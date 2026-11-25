@@ -6,9 +6,7 @@
 <meta name="robots" content="noindex">
 <title>Best Barber — coiffeur barbier, Lausanne (maquette)</title>
 <meta name="description" content="Maquette de site pour Best Barber, coiffeur barbier au chemin du Closelet 6 à Lausanne.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <style>
 :root{
   --night:#111513;
@@ -294,7 +292,7 @@ footer .logo{font-size:30px;color:var(--foam)}
       <p class="tip"><span data-fr>Pressé&nbsp;? Appelez avant de passer&nbsp;: sans rendez-vous, c’est possible selon l’affluence (à confirmer).</span><span data-en>In a hurry? Call ahead: walk-ins are possible when it’s not too busy (to be confirmed).</span></p>
     </div>
     <div class="map">
-      <iframe title="Carte — Chemin du Closelet 6, Lausanne" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Chemin%20du%20Closelet%206%2C%201006%20Lausanne&amp;z=16&amp;output=embed"></iframe>
+      <button type="button" class="map-consent" data-src="https://maps.google.com/maps?q=Chemin%20du%20Closelet%206%2C%201006%20Lausanne&amp;z=16&amp;output=embed" data-title="Carte — Chemin du Closelet 6, Lausanne"><b><span data-fr>Afficher la carte</span><span data-en>Show the map</span></b><small><span data-fr>La carte est chargée depuis Google Maps seulement si vous cliquez.</span><span data-en>The map loads from Google Maps only when you click.</span></small></button>
     </div>
   </div>
 </section>
@@ -384,7 +382,9 @@ footer .logo{font-size:30px;color:var(--foam)}
   });
 })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="/assets/js/gsap.min.js" defer></script>
+<script src="/assets/js/ScrollTrigger.min.js" defer></script>
+<style>.map-consent{width:100%;height:100%;min-height:260px;border:0;display:grid;place-items:center;gap:8px;padding:20px;background:repeating-linear-gradient(135deg,rgba(0,0,0,.04) 0 12px,transparent 12px 24px);color:inherit;font:inherit;cursor:pointer;text-align:center}.map-consent b{font-size:17px}.map-consent small{opacity:.7;max-width:34ch}</style>
+<script>document.querySelectorAll('.map-consent').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=b.dataset.src;f.title=b.dataset.title||'Carte';f.loading='lazy';f.style.cssText='width:100%;height:100%;min-height:260px;border:0;display:block';f.referrerPolicy='no-referrer-when-downgrade';b.replaceWith(f)})});</script>
 </body>
 </html>

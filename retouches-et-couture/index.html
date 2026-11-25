@@ -6,9 +6,7 @@
 <meta name="robots" content="noindex">
 <title>Retouches &amp; Couture — atelier, rue de la Tour, Lausanne (maquette)</title>
 <meta name="description" content="Maquette non officielle : atelier de retouches et couture, rue de la Tour 25, Lausanne.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Karla:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <style>
 :root{
   --chalk:#F3EFE7; --chalk-2:#E7E0D3; --ink:#1B1A17; --ink-soft:#57534A;
@@ -303,7 +301,7 @@ footer p{margin:6px 0;max-width:70ch}
       <p class="tip"><span data-fr>Une urgence (mariage, entretien, voyage)&nbsp;? Appelez avant de passer pour vérifier le délai possible.</span><span data-en>In a hurry (wedding, interview, trip)? Call ahead to check what turnaround is possible.</span></p>
     </div>
     <div class="map">
-      <iframe title="Carte : Rue de la Tour 25, Lausanne" loading="lazy" src="https://maps.google.com/maps?q=Rue%20de%20la%20Tour%2025%2C%201004%20Lausanne&output=embed"></iframe>
+      <button type="button" class="map-consent" data-src="https://maps.google.com/maps?q=Rue%20de%20la%20Tour%2025%2C%201004%20Lausanne&output=embed" data-title="Carte : Rue de la Tour 25, Lausanne"><b><span data-fr>Afficher la carte</span><span data-en>Show the map</span></b><small><span data-fr>La carte est chargée depuis Google Maps seulement si vous cliquez.</span><span data-en>The map loads from Google Maps only when you click.</span></small></button>
     </div>
   </div>
 </section>
@@ -318,8 +316,8 @@ footer p{margin:6px 0;max-width:70ch}
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="/assets/js/gsap.min.js"></script>
+<script src="/assets/js/ScrollTrigger.min.js"></script>
 <script>
 (function(){
   var body=document.body, btn=document.getElementById('lang');
@@ -388,5 +386,7 @@ footer p{margin:6px 0;max-width:70ch}
   }});
 })();
 </script>
+<style>.map-consent{width:100%;height:100%;min-height:260px;border:0;display:grid;place-items:center;gap:8px;padding:20px;background:repeating-linear-gradient(135deg,rgba(0,0,0,.04) 0 12px,transparent 12px 24px);color:inherit;font:inherit;cursor:pointer;text-align:center}.map-consent b{font-size:17px}.map-consent small{opacity:.7;max-width:34ch}</style>
+<script>document.querySelectorAll('.map-consent').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=b.dataset.src;f.title=b.dataset.title||'Carte';f.loading='lazy';f.style.cssText='width:100%;height:100%;min-height:260px;border:0;display:block';f.referrerPolicy='no-referrer-when-downgrade';b.replaceWith(f)})});</script>
 </body>
 </html>

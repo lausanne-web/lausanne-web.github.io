@@ -8,8 +8,7 @@
 <meta property="og:title" content="Boulangerie Grin & Cie, Lausanne">
 <meta property="og:description" content="Pains, msemmen, pâtisseries marocaines et thé à la menthe, rue du Valentin.">
 <meta name="theme-color" content="#2B4FA8">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
 <style>
 :root{
   --ink:#22263F;--ink-soft:#575C78;--surface:#FFFFFF;--surface-mint:#EAF3EE;--line:#D9DDE6;
@@ -223,7 +222,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(-
         <dd><span data-fr>Oui, il y a quelques tables.</span><span data-en>Yes, there are a few tables.</span></dd>
       </dl>
     </div>
-    <iframe loading="lazy" title="Carte : Rue du Valentin 66, Lausanne" src="https://maps.google.com/maps?q=Rue+du+Valentin+66,+1004+Lausanne&output=embed"></iframe>
+    <button type="button" class="map-consent" data-src="https://maps.google.com/maps?q=Rue+du+Valentin+66,+1004+Lausanne&output=embed" data-title="Carte : Rue du Valentin 66, Lausanne"><b><span data-fr>Afficher la carte</span><span data-en>Show the map</span></b><small><span data-fr>La carte est chargée depuis Google Maps seulement si vous cliquez.</span><span data-en>The map loads from Google Maps only when you click.</span></small></button>
   </div>
 </section>
 
@@ -237,9 +236,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(-
 </div>
 <footer><div class="wrap"><span translate="no">Boulangerie Grin & Cie · Lausanne</span><span><span data-fr>Maquette réalisée à titre de proposition</span><span data-en>Mockup created as a proposal</span></span></div></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="/assets/js/gsap.min.js"></script>
+<script src="/assets/js/ScrollTrigger.min.js"></script>
+<script src="/assets/js/SplitText.min.js"></script>
 <script>
 /* Language toggle (works without GSAP) */
 document.getElementById('lang').addEventListener('click',()=>{
@@ -321,5 +320,7 @@ document.getElementById('lang').addEventListener('click',()=>{
   });
 })();
 </script>
+<style>.map-consent{width:100%;height:100%;min-height:260px;border:0;display:grid;place-items:center;gap:8px;padding:20px;background:repeating-linear-gradient(135deg,rgba(0,0,0,.04) 0 12px,transparent 12px 24px);color:inherit;font:inherit;cursor:pointer;text-align:center}.map-consent b{font-size:17px}.map-consent small{opacity:.7;max-width:34ch}</style>
+<script>document.querySelectorAll('.map-consent').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=b.dataset.src;f.title=b.dataset.title||'Carte';f.loading='lazy';f.style.cssText='width:100%;height:100%;min-height:260px;border:0;display:block';f.referrerPolicy='no-referrer-when-downgrade';b.replaceWith(f)})});</script>
 </body>
 </html>
