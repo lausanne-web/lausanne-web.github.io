@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Maison Lecointre, boulangerie-pâtisserie, rue du Maupas, Lausanne (maquette)</title>
+<meta name="description" content="Boulangerie-pâtisserie artisanale de deux frères, rue du Maupas 10 à Lausanne. Maquette de site proposée par Felix Hancock.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..800,50&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com">
+<style>
+:root{
+  --cocoa:#2A1B14;      /* page ground, deep cocoa */
+  --cocoa-2:#3A271D;    /* raised surfaces */
+  --praline:#D59A5B;    /* primary accent: buttons, links */
+  --cream:#F6EBDD;      /* text on dark, light sections */
+  --cream-2:#E9D8C3;    /* muted text on dark */
+  --pistache:#A9B98A;   /* small accent */
+  --ink:#24170F;        /* text on light */
+  --r:22px;
+  --wrap:min(1180px,100% - 40px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cocoa);color:var(--cream);font:400 17px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--praline);outline-offset:3px;border-radius:6px}
+.wrap{width:var(--wrap);margin-inline:auto}
+[data-en]{display:none}body.en [data-fr]{display:none}body.en [data-en]{display:revert}
+.serif{font-family:Fraunces,Georgia,serif;font-variation-settings:"SOFT" 50}
+
+/* banner */
+.banner{background:var(--praline);color:var(--ink);font-size:14px;text-align:center;padding:8px 16px}
+.banner a{font-weight:700}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:20;background:rgba(42,27,20,.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(246,235,221,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px}
+.logo{font-family:Fraunces,serif;font-weight:600;font-size:21px;text-decoration:none;letter-spacing:.01em}
+.nav-links{display:flex;gap:22px;align-items:center;font-size:15px}
+.nav-links a{text-decoration:none;color:var(--cream-2)}
+.nav-links a:hover{color:var(--cream)}
+.lang{border:1px solid rgba(246,235,221,.3);background:none;color:var(--cream);font:700 13px Manrope;padding:7px 12px;border-radius:99px;cursor:pointer;min-height:36px}
+@media(max-width:760px){.nav-links a{display:none}}
+
+/* hero */
+.hero{position:relative;padding:clamp(28px,6vw,70px) 0 clamp(40px,7vw,90px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,4vw,60px);align-items:center}
+.kicker{color:var(--pistache);font-weight:700;font-size:15px;margin:0 0 14px}
+.giant{font-family:Fraunces,serif;font-weight:300;font-size:clamp(64px,13vw,190px);line-height:.86;letter-spacing:-.035em;margin:0;font-variation-settings:"SOFT" 100,"opsz" 144}
+.giant em{font-style:italic;font-weight:500;color:var(--praline)}
+.lede{max-width:34em;font-size:clamp(17px,1.6vw,19px);color:var(--cream-2);margin:24px 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:99px;font-weight:700;text-decoration:none;transition:transform .15s ease,background-color .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-1{background:var(--praline);color:var(--ink)}
+.btn-2{border:1.5px solid rgba(246,235,221,.35)}
+@media(hover:hover){.btn-1:hover{background:#E3AC6E}.btn-2:hover{background:rgba(246,235,221,.08)}}
+
+/* signature: spin the Paris-Brest */
+.plate-zone{position:relative;justify-self:center;width:min(420px,80vw);aspect-ratio:1;margin-bottom:96px}
+.plate{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:#6b4a33;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 10px rgba(246,235,221,.06);touch-action:none;cursor:grab;will-change:transform}
+.plate:active{cursor:grabbing}
+.plate img{width:100%;height:100%;object-fit:cover;object-position:50% 52%;transform:scale(1.18);pointer-events:none;user-select:none}
+.ring-text{position:absolute;inset:-34px;pointer-events:none;transform-origin:50% 50%}
+.ring-text text{fill:var(--cream-2);font:600 13px Manrope;letter-spacing:.32em}
+.spin-hint{position:absolute;left:50%;bottom:-70px;transform:translateX(-50%);font-size:13px;color:var(--cream-2);white-space:nowrap}
+.cap{font-size:12px;color:rgba(246,235,221,.6)}
+.plate-zone .cap{position:absolute;left:50%;transform:translateX(-50%);bottom:-94px;white-space:nowrap}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.plate-zone{margin-top:70px;width:min(320px,72vw)}}
+
+/* brothers */
+.light{background:var(--cream);color:var(--ink)}
+section{scroll-margin-top:70px}
+.sec{padding:clamp(60px,9vw,120px) 0}
+.h2{font-family:Fraunces,serif;font-weight:400;font-size:clamp(34px,5.2vw,64px);line-height:1.02;letter-spacing:-.02em;margin:0 0 18px}
+.duo{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,3vw,32px);margin-top:42px}
+.bro{border-radius:var(--r);padding:clamp(22px,3vw,36px);background:#fff;border:1px solid #ead9c4}
+.bro h3{font-family:Fraunces,serif;font-weight:600;font-size:clamp(26px,3vw,34px);margin:0 0 4px}
+.bro .role{color:#8a5a2b;font-weight:700;margin:0 0 14px}
+.bro p{margin:0}
+@media(max-width:720px){.duo{grid-template-columns:1fr}}
+
+/* vitrine (interactive) */
+.vitrine{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,4vw,56px);align-items:start}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0}
+.tab{min-height:44px;padding:0 18px;border-radius:99px;border:1.5px solid rgba(246,235,221,.28);background:none;color:var(--cream);font:700 15px Manrope;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.tab[aria-selected="true"]{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.list{list-style:none;padding:0;margin:0}
+.list li{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid rgba(246,235,221,.14);font-size:clamp(18px,2vw,22px);font-family:Fraunces,serif}
+.list li .n{font:500 14px Manrope;color:var(--cream-2);text-align:right;flex:none}
+.panel[hidden]{display:none}
+.photo{border-radius:var(--r);overflow:hidden;background:var(--cocoa-2);position:relative}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo .cap{position:absolute;left:12px;bottom:10px;background:rgba(42,27,20,.7);padding:3px 8px;border-radius:6px}
+.v-photo{aspect-ratio:4/5}
+@media(max-width:860px){.vitrine{grid-template-columns:1fr}.v-photo{aspect-ratio:4/3}}
+
+/* gallery strip */
+.strip{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(12px,2vw,20px);margin-top:clamp(36px,5vw,60px)}
+.strip .photo{aspect-ratio:3/2}
+.strip .photo:last-child{aspect-ratio:auto;min-height:100%}
+@media(max-width:720px){.strip{grid-template-columns:1fr}.strip .photo:last-child{aspect-ratio:3/2}}
+
+/* reviews */
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,20px);margin-top:36px}
+.theme{padding:24px;border-radius:var(--r);background:#fff;border:1px solid #ead9c4}
+.theme b{display:block;font-family:Fraunces,serif;font-weight:600;font-size:22px;margin-bottom:6px}
+.theme p{margin:0;color:#4b3a2e}
+.score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.score strong{font-family:Fraunces,serif;font-size:clamp(56px,8vw,96px);font-weight:400;line-height:1}
+.note{font-size:14px;color:#6d5848}
+@media(max-width:860px){.themes{grid-template-columns:1fr}}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px)}
+.hours{list-style:none;padding:0;margin:0}
+.hours li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(246,235,221,.14)}
+.hours li span:last-child{font-variant-numeric:tabular-nums;color:var(--cream-2);text-align:right}
+.addr{font-family:Fraunces,serif;font-size:clamp(28px,3.4vw,40px);line-height:1.1;margin:0 0 18px}
+@media(max-width:760px){.visit{grid-template-columns:1fr}}
+
+footer{padding:40px 0 60px;font-size:14px;color:var(--cream-2);border-top:1px solid rgba(246,235,221,.1)}
+footer p{margin:6px 0}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="banner" role="note">
+  <span data-fr>Maquette proposée par Felix Hancock — site non officiel de Maison Lecointre.</span>
+  <span data-en>Proposed mock-up by Felix Hancock — not the official Maison Lecointre site.</span>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Maison Lecointre</a>
+    <nav class="nav-links" aria-label="Navigation">
+      <a href="#freres"><span data-fr>Les frères</span><span data-en>The brothers</span></a>
+      <a href="#vitrine"><span data-fr>La vitrine</span><span data-en>The counter</span></a>
+      <a href="#visite"><span data-fr>Horaires</span><span data-en>Hours</span></a>
+      <button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kicker"><span data-fr>Boulangerie · Pâtisserie · Tea-room — Chauderon, Lausanne</span><span data-en>Bakery · Pâtisserie · Tea room — Chauderon, Lausanne</span></p>
+      <h1 class="giant" id="h1"><span data-fr>Deux frères,<br><em>un</em> fournil.</span><span data-en>Two brothers,<br><em>one</em> bakery.</span></h1>
+      <p class="lede">
+        <span data-fr>Camille à la pâtisserie, Adrien au pain. Depuis l’automne 2024, rue du Maupas, tout est fait maison&nbsp;: viennoiseries, pains, entremets et le Paris-Brest qui a déjà sa réputation.</span>
+        <span data-en>Camille on pastry, Adrien on bread. Since autumn 2024 on rue du Maupas, everything is made in-house: viennoiseries, breads, cakes and a Paris-Brest that already has a reputation.</span>
+      </p>
+      <div class="ctas">
+        <a class="btn btn-1" href="tel:+41216463107"><span data-fr>Appeler la boutique</span><span data-en>Call the shop</span></a>
+        <a class="btn btn-2" href="#visite"><span data-fr>Adresse et horaires</span><span data-en>Address and hours</span></a>
+      </div>
+    </div>
+
+    <div class="plate-zone" id="plateZone">
+      <span class="cap" data-fr>Photo d’illustration (Unsplash)</span><span class="cap" data-en>Illustrative photo (Unsplash)</span>
+      <svg class="ring-text" viewBox="0 0 300 300" aria-hidden="true"><defs><path id="circ" d="M150,150 m-138,0 a138,138 0 1,1 276,0 a138,138 0 1,1 -276,0"/></defs><text><textPath href="#circ">PARIS-BREST · PRALINÉ MAISON · RUE DU MAUPAS 10 · LAUSANNE ·</textPath></text></svg>
+      <div class="plate" id="plate" role="img" aria-label="Paris-Brest au praliné. Faites-le tourner du doigt.">
+        <img src="https://images.unsplash.com/photo-1761637604739-790197a32073?auto=format&fit=crop&w=1000&h=1000&q=75" width="1000" height="1000" alt="Paris-Brest garni de crème pralinée et d’amandes effilées">
+      </div>
+      <span class="spin-hint" aria-hidden="true"><span data-fr>↻ Faites-le tourner</span><span data-en>↻ Give it a spin</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="light sec" id="freres">
+  <div class="wrap">
+    <h2 class="h2"><span data-fr>Un pâtissier, un boulanger, une même exigence.</span><span data-en>A pastry chef, a baker, the same standards.</span></h2>
+    <div class="duo">
+      <article class="bro">
+        <h3>Camille</h3>
+        <p class="role"><span data-fr>Pâtissier</span><span data-en>Pastry chef</span></p>
+        <p><span data-fr>Ancien chef pâtissier de La Table du Lausanne Palace. Entremets, tartes et pâtisseries individuelles, fins et équilibrés.</span><span data-en>Former head pastry chef at La Table du Lausanne Palace. Cakes, tarts and individual pastries, delicate and balanced.</span></p>
+      </article>
+      <article class="bro">
+        <h3>Adrien</h3>
+        <p class="role"><span data-fr>Boulanger</span><span data-en>Baker</span></p>
+        <p><span data-fr>Venu au pain après un parcours dans l’art. Pains au levain, baguettes et viennoiseries pétries et façonnées sur place.</span><span data-en>Came to bread after a career in art. Sourdough loaves, baguettes and viennoiseries kneaded and shaped on site.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="vitrine">
+  <div class="wrap vitrine">
+    <div>
+      <h2 class="h2"><span data-fr>Ce qui vous attend en vitrine</span><span data-en>What’s in the window</span></h2>
+      <div class="tabs" role="tablist" aria-label="Catégories">
+        <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true"><span data-fr>Pâtisserie</span><span data-en>Pastry</span></button>
+        <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span data-fr>Viennoiserie &amp; pain</span><span data-en>Viennoiserie &amp; bread</span></button>
+        <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span data-fr>Salé &amp; café</span><span data-en>Savoury &amp; coffee</span></button>
+      </div>
+      <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+        <ul class="list">
+          <li>Paris-Brest <span class="n"><span data-fr>la signature</span><span data-en>the signature</span></span></li>
+          <li><span data-fr>Tarte citron meringuée</span><span data-en>Lemon meringue tart</span></li>
+          <li><span data-fr>Tarte au chocolat</span><span data-en>Chocolate tart</span></li>
+          <li><span data-fr>Flan pâtissier</span><span data-en>Pastry flan</span></li>
+          <li><span data-fr>Forêt-noire</span><span data-en>Black Forest</span></li>
+          <li><span><span data-fr>Entremets à partager</span><span data-en>Whole cakes to share</span></span> <span class="n"><span data-fr>sur commande</span><span data-en>to order</span></span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+        <ul class="list">
+          <li><span data-fr>Pain au chocolat</span><span data-en>Pain au chocolat</span></li>
+          <li>Crousti-gianduja</li>
+          <li><span data-fr>Brioches</span><span data-en>Brioches</span></li>
+          <li><span data-fr>Pains du jour</span><span data-en>Breads of the day</span></li>
+          <li><span data-fr>Cookies &amp; financiers</span><span data-en>Cookies &amp; financiers</span></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+        <ul class="list">
+          <li><span data-fr>Pain suisse jambon-fromage</span><span data-en>Ham &amp; cheese pain suisse</span></li>
+          <li>Pain bagnat</li>
+          <li><span data-fr>Baguette poulet-curry</span><span data-en>Chicken-curry baguette</span></li>
+          <li><span><span data-fr>Café &amp; petit-déjeuner</span><span data-en>Coffee &amp; breakfast</span></span> <span class="n"><span data-fr>au tea-room</span><span data-en>in the tea room</span></span></li>
+        </ul>
+      </div>
+      <p class="cap" style="margin-top:14px"><span data-fr>Sélection selon la saison et le jour, à confirmer en boutique.</span><span data-en>Selection varies by season and day; check in store.</span></p>
+    </div>
+    <figure class="photo v-photo" style="margin:0">
+      <img id="vimg" src="https://images.unsplash.com/photo-1643944471768-2d2eac3afb6d?auto=format&fit=crop&w=1200&h=1500&q=75" width="1200" height="1500" alt="Vitrine de pâtisseries et viennoiseries" loading="lazy">
+      <figcaption class="cap"><span data-fr>Photo d’illustration (Unsplash)</span><span data-en>Illustrative photo (Unsplash)</span></figcaption>
+    </figure>
+  </div>
+  <div class="wrap strip">
+    <figure class="photo" style="margin:0"><img src="https://images.unsplash.com/photo-1548538931-b47653628cdc?auto=format&fit=crop&w=1400&h=933&q=75" width="1400" height="933" alt="Croissants dorés en vitrine" loading="lazy"><figcaption class="cap"><span data-fr>Photo d’illustration (Unsplash)</span><span data-en>Illustrative photo (Unsplash)</span></figcaption></figure>
+    <figure class="photo" style="margin:0"><img src="https://images.unsplash.com/photo-1767379755386-1b213fb63c07?auto=format&fit=crop&w=900&h=1100&q=75" width="900" height="1100" alt="Viennoiseries sur une étagère de boulangerie" loading="lazy"><figcaption class="cap"><span data-fr>Photo d’illustration (Unsplash)</span><span data-en>Illustrative photo (Unsplash)</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="light sec" id="avis">
+  <div class="wrap">
+    <div class="score"><strong>4,8</strong><span><span data-fr>sur 5, environ 140 avis</span><span data-en>out of 5, about 140 reviews</span><br><span class="note" data-fr>d’après les avis Google</span><span class="note" data-en>based on Google reviews</span></span></div>
+    <h2 class="h2" style="margin-top:18px"><span data-fr>Ce que disent les clients</span><span data-en>What customers say</span></h2>
+    <div class="themes">
+      <div class="theme"><b><span data-fr>La finesse</span><span data-en>Finesse</span></b><p><span data-fr>Des pâtisseries délicates et bien équilibrées, jamais trop sucrées.</span><span data-en>Delicate, well-balanced pastries, never too sweet.</span></p></div>
+      <div class="theme"><b><span data-fr>Le vrai pain</span><span data-en>Real bread</span></b><p><span data-fr>Un pain artisanal qu’on vient chercher exprès.</span><span data-en>Artisan bread people make a trip for.</span></p></div>
+      <div class="theme"><b><span data-fr>L’accueil</span><span data-en>The welcome</span></b><p><span data-fr>Un accueil chaleureux et souriant, et une vitrine qu’on voudrait goûter en entier.</span><span data-en>A warm, smiling welcome, and a counter you want to try all of.</span></p></div>
+    </div>
+    <p class="note" style="margin-top:22px"><span data-fr>Thèmes résumés à partir des avis publics. Cité par Gault&amp;Millau et Lausanne Tourisme.</span><span data-en>Themes summarised from public reviews. Featured by Gault&amp;Millau and Lausanne Tourisme.</span></p>
+  </div>
+</section>
+
+<section class="sec" id="visite">
+  <div class="wrap visit">
+    <div>
+      <h2 class="h2"><span data-fr>Passer nous voir</span><span data-en>Come and visit</span></h2>
+      <p class="addr">Rue du Maupas 10<br>1004 Lausanne</p>
+      <div class="ctas">
+        <a class="btn btn-1" href="https://www.google.com/maps/search/?api=1&query=Maison+Lecointre+Rue+du+Maupas+10+1004+Lausanne" target="_blank" rel="noopener"><span data-fr>Itinéraire</span><span data-en>Directions</span></a>
+        <a class="btn btn-2" href="tel:+41216463107">021 646 31 07</a>
+      </div>
+      <p class="cap" style="margin-top:16px"><a href="https://www.instagram.com/maison_lecointre_/" target="_blank" rel="noopener">Instagram @maison_lecointre_</a></p>
+    </div>
+    <div>
+      <ul class="hours" aria-label="Horaires">
+        <li><span data-fr>Lundi – vendredi</span><span data-en>Monday – Friday</span><span>6h30 – 18h30</span></li>
+        <li><span data-fr>Samedi</span><span data-en>Saturday</span><span><span data-fr>7h00 – 17h00 (à confirmer)</span><span data-en>7:00 – 17:00 (to be confirmed)</span></span></li>
+        <li><span data-fr>Dimanche</span><span data-en>Sunday</span><span data-fr>Fermé</span><span data-en>Closed</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-fr>Maquette réalisée par Felix Hancock pour présenter une idée de site à Maison Lecointre. Les horaires et l’offre sont à confirmer avec la boutique.</p>
+    <p data-en>Mock-up made by Felix Hancock to present a website idea to Maison Lecointre. Hours and products to be confirmed with the shop.</p>
+    <p data-fr>Photos d’illustration&nbsp;: Unsplash.</p><p data-en>Illustrative photos: Unsplash.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  // language toggle
+  var btn=document.getElementById('lang');
+  btn.addEventListener('click',function(){
+    var en=document.body.classList.toggle('en');
+    document.documentElement.lang=en?'en':'fr';
+    btn.textContent=en?'FR':'EN';
+    btn.setAttribute('aria-label',en?'Passer en français':'Switch to English');
+  });
+
+  // vitrine tabs (keyboard: arrows)
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  var imgs=[
+    'https://images.unsplash.com/photo-1643944471768-2d2eac3afb6d?auto=format&fit=crop&w=1200&h=1500&q=75',
+    'https://images.unsplash.com/photo-1767379755386-1b213fb63c07?auto=format&fit=crop&w=1200&h=1500&q=75',
+    'https://images.unsplash.com/photo-1548538931-b47653628cdc?auto=format&fit=crop&w=1200&h=1500&q=75'
+  ];
+  var vimg=document.getElementById('vimg');
+  function select(i,focus){
+    tabs.forEach(function(t,j){
+      var on=i===j;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+    vimg.src=imgs[i];
+    if(focus)tabs[i].focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(i)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight')select((i+1)%tabs.length,true);
+      if(e.key==='ArrowLeft')select((i-1+tabs.length)%tabs.length,true);
+    });
+  });
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // signature: drag to spin the Paris-Brest, with inertia
+  var plate=document.getElementById('plate'),angle=0,vel=0,drag=false,last=null,raf=null;
+  function center(){var r=plate.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}}
+  function ang(e){var c=center();return Math.atan2(e.clientY-c.y,e.clientX-c.x)*180/Math.PI}
+  function paint(){plate.style.transform='rotate('+angle+'deg)'}
+  function coast(){if(drag)return;vel*=0.95;angle+=vel;paint();if(Math.abs(vel)>0.05)raf=requestAnimationFrame(coast)}
+  plate.addEventListener('pointerdown',function(e){drag=true;last=ang(e);vel=0;cancelAnimationFrame(raf);plate.setPointerCapture(e.pointerId)});
+  plate.addEventListener('pointermove',function(e){if(!drag)return;var a=ang(e),d=a-last;if(d>180)d-=360;if(d<-180)d+=360;angle+=d;vel=d;last=a;paint()});
+  function end(){if(!drag)return;drag=false;if(!reduce)coast()}
+  plate.addEventListener('pointerup',end);plate.addEventListener('pointercancel',end);
+  plate.tabIndex=0;
+  plate.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){angle+=15;paint()}if(e.key==='ArrowLeft'){angle-=15;paint()}});
+
+  if(reduce||!window.gsap)return;
+  gsap.registerPlugin(ScrollTrigger);
+  // one orchestrated entrance
+  var tl=gsap.timeline({defaults:{ease:'power3.out'}});
+  tl.from('.giant',{yPercent:12,opacity:0,duration:.9})
+    .from('.lede, .ctas',{y:18,opacity:0,duration:.6,stagger:.08},'-=.5')
+    .from('#plate',{scale:.85,opacity:0,rotate:-60,duration:1.1,clearProps:'transform,opacity'},'-=.9');
+  // the plate keeps turning slowly as you scroll
+  gsap.to('.ring-text',{rotate:120,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
+  ScrollTrigger.batch('.bro, .theme',{start:'top 88%',onEnter:function(b){gsap.from(b,{y:24,opacity:0,duration:.6,stagger:.08,ease:'power3.out',overwrite:true})}});
+})();
+</script>
+</body>
+</html>
