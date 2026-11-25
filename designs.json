@@ -1,0 +1,9 @@
+{
+  "_about": "Design registry for lausanne-web demos. The builder reads this before designing and appends one entry per new demo. A new demo must not repeat the archetype of the last 6 entries, and must differ from every entry in at least 4 of: archetype, nav, hero, palette_family, display_font, signature.",
+  "demos": [
+    {"slug":"grin-et-cie","date":"2026-11-23","archetype":"classic-landing","nav":"top bar","hero":"giant type + cut-out product","palette_family":"blue/amber","display_font":"Gloock","body_font":"Work Sans","signature":"3D tilt hero + pinned horizontal product panels"},
+    {"slug":"maison-lecointre","date":"2026-11-24","archetype":"classic-landing","nav":"top bar","hero":"giant serif type + photo","palette_family":"cocoa/praline dark","display_font":"Fraunces","body_font":"Manrope","signature":"drag-to-spin Paris-Brest plate"},
+    {"slug":"retouches-et-couture","date":"2026-11-25","archetype":"classic-landing","nav":"top bar","hero":"giant serif type + photo","palette_family":"chalk/charcoal/red","display_font":"Bodoni Moda","body_font":"Karla","signature":"drag-the-hem trousers + tape-measure marquee"},
+    {"slug":"best-barber-lausanne","date":"2026-11-25","archetype":"classic-landing","nav":"top bar","hero":"condensed type + photo","palette_family":"bottle green/brass dark","display_font":"Big Shoulders Display","body_font":"Instrument Sans","signature":"draggable barber pole"}
+  ]
+}
