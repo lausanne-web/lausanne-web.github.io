@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Café Contemplation — Ouchy, Lausanne (maquette)</title>
+<meta name="description" content="Maquette non officielle : Café Contemplation, café de spécialité à l'avenue d'Ouchy 76, Lausanne.">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --paper:#F3ECDF; --paper2:#EADFCB; --lake:#16424F; --lake2:#0F3340; --lakel:#6FA9B4;
+  --apricot:#E77C4E; --ink:#2A211C; --crema:#CFA57A; --muted:#5d5047;
+  --hand:'Caveat',cursive; --disp:'Shrikhand',Georgia,serif; --body:'Instrument Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--lake);color:var(--ink);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+[data-en]{display:none} body.en [data-fr]{display:none} body.en [data-en]{display:revert}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--apricot);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- banner ---------- */
+.banner{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;background:var(--lake2);color:#F3ECDF;font-size:14px}
+.banner p{margin:0}
+.lang{flex:none;font:700 13px/1 var(--body);letter-spacing:.08em;background:var(--paper);color:var(--lake);border:2px dashed var(--lake);outline:3px solid var(--paper);padding:8px 10px;cursor:pointer}
+
+/* ---------- table + noise ---------- */
+/* Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (noise-texture) */
+.grain{position:relative;isolation:isolate}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;opacity:.55;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='.35' intercept='.65'/%3E%3CfeFuncG type='linear' slope='.35' intercept='.65'/%3E%3CfeFuncB type='linear' slope='.35' intercept='.65'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+main{padding:0 clamp(16px,4vw,48px)}
+.pc{max-width:1120px;margin:0 auto;padding:clamp(40px,8vh,90px) 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);align-items:start;padding-right:110px}
+.pc + .pc{border-top:1px dashed rgba(243,236,223,.18)}
+.label{grid-column:1/-1;margin:0;color:#F3ECDF;font:600 26px/1 var(--hand);letter-spacing:.02em;opacity:.9}
+.label b{font-family:var(--body);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin-right:10px;color:var(--apricot)}
+.card{position:relative;background:var(--paper);border-radius:6px;box-shadow:0 1px 0 rgba(0,0,0,.08),0 18px 40px -12px rgba(0,0,0,.45);overflow:hidden}
+.front{height:520px;transform:rotate(-1.4deg)}
+.front svg.scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+.back{padding:clamp(22px,3vw,36px);transform:rotate(.9deg)}
+.pc:nth-of-type(even) .front{transform:rotate(1.2deg)} .pc:nth-of-type(even) .back{transform:rotate(-.8deg)}
+.back h2{font:400 clamp(34px,4vw,50px)/1.02 var(--disp);color:var(--lake);margin:0 0 6px;padding-right:96px}
+.back h3{font:700 28px/1.1 var(--hand);margin:18px 0 4px;color:var(--apricot)}
+.back p{margin:0 0 12px}
+.back h2 + .note,.order .front h2 + .note{padding-right:92px}
+.caption.top{top:14px;bottom:auto}
+.hand{font-family:var(--hand);font-size:25px;line-height:1.25;color:var(--ink)}
+.divline{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start}
+.divline > :last-child{border-left:1.5px solid rgba(42,33,28,.25);padding-left:20px}
+.addr{font-family:var(--hand);font-size:24px;line-height:1.3}
+.addr span.l{display:block;border-bottom:1.5px solid rgba(42,33,28,.28);padding:4px 0}
+.stamp-corner{position:absolute;top:18px;right:18px;width:78px;height:92px;z-index:2}
+.caption{position:absolute;left:16px;bottom:12px;z-index:2;font:600 22px/1 var(--hand);color:#F3ECDF;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:11px 18px;border-radius:999px;font:600 16px/1.1 var(--body);text-decoration:none;border:2px solid var(--lake);cursor:pointer}
+.btn.wa{background:var(--lake);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--lake)}
+.btn.small{min-height:40px;padding:8px 14px;font-size:15px}
+.note{font-size:14px;color:var(--muted)}
+.tbc{font-size:13px;background:#fbe2d3;color:#7a3a1c;padding:2px 7px;border-radius:4px;white-space:nowrap}
+
+/* ---------- hero ---------- */
+.hero .front{height:560px}
+.hero-title{position:absolute;left:0;right:0;top:12%;z-index:2;text-align:center;padding:0 18px}
+.hero-title small{display:block;font:600 clamp(24px,3vw,30px)/1 var(--hand);color:var(--lake)}
+.hero-title h1{margin:4px 0 0;font:400 clamp(34px,6vw,72px)/.95 var(--disp);font-size:11cqi;color:var(--paper);-webkit-text-stroke:2px var(--lake);paint-order:stroke fill;text-shadow:4px 5px 0 var(--apricot)}
+.hero-title p{margin:10px 0 0;font:600 14px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--lake)}
+/* Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (spinning-text) */
+.postmark{position:absolute;z-index:2;width:136px;height:136px;right:22px;bottom:70px;color:var(--lake2);opacity:.85}
+.postmark .ring{animation:spin 22s linear infinite;transform-origin:50% 50%}
+.postmark text{font:700 11.5px var(--body);letter-spacing:.2em;fill:currentColor}
+@keyframes spin{to{transform:rotate(360deg)}}
+.flip{perspective:1400px;height:560px;transform:rotate(-1.4deg)}
+.flip .inner{position:relative;height:100%;transition:transform .8s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.flip .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flip .face.front{transform:none;height:100%;container-type:inline-size}
+.flip .face.verso{transform:rotateY(180deg);padding:28px;display:none;flex-direction:column;justify-content:center}
+.js .flip .face.verso{display:flex}
+.flip.on .inner{transform:rotateY(180deg)}
+.fliptab{position:absolute;z-index:4;left:16px;bottom:14px;background:var(--paper);color:var(--lake);border:2px solid var(--lake);border-radius:999px;padding:8px 14px;font:600 14px/1 var(--body);cursor:pointer;display:none}
+.js .fliptab{display:inline-block}
+.verso h2{font:400 40px/1 var(--disp);color:var(--lake);margin:0 0 10px}
+.today{font:700 30px/1.15 var(--hand);color:var(--apricot);margin:0 0 6px}
+
+/* ---------- menu + pour ---------- */
+.cupwrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;background:radial-gradient(circle at 50% 42%,#dbe9ea 0,#b9d5d9 55%,#8fbcc4 100%)}
+.cupwrap svg{width:min(360px,82%);height:auto;max-height:400px;display:block;touch-action:none;user-select:none}
+.pour{font:700 16px/1.1 var(--body);background:var(--lake);color:var(--paper);border:0;border-radius:999px;padding:13px 20px;cursor:pointer;min-height:48px;touch-action:none;user-select:none;-webkit-user-select:none}
+.pour[aria-pressed="true"]{background:var(--apricot);color:var(--ink)}
+.pourmsg{margin:0;font:600 22px/1.1 var(--hand);color:var(--lake2);min-height:1.2em;text-align:center}
+#jug{transition:transform .35s ease;transform-origin:318px 92px}
+.pouring #jug{transform:rotate(-28deg)}
+#stream{opacity:0;transition:opacity .15s}
+.pouring #stream{opacity:1}
+.menu{list-style:none;margin:0;padding:0}
+.menu li{display:flex;align-items:baseline;gap:8px;padding:3px 0;font-family:var(--hand);font-size:24px;line-height:1.2}
+.menu li i{flex:1;border-bottom:2px dotted rgba(42,33,28,.35);transform:translateY(-5px);min-width:16px}
+.menu li em{font-family:var(--body);font-style:normal;font-size:13px;color:var(--muted);text-align:right}
+
+/* ---------- order ---------- */
+.order .front{height:auto;min-height:520px;padding:26px 24px 22px;background:var(--paper)}
+.order .front h2{font:400 clamp(32px,3.6vw,44px)/1 var(--disp);color:var(--lake);margin:0 0 4px;padding-right:96px}
+.pick{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px}
+.pick li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;border-bottom:1.5px solid rgba(42,33,28,.18);padding:4px 0}
+.pick .nm{font:600 23px/1.1 var(--hand)}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:36px;height:36px;border-radius:50%;border:2px solid var(--lake);background:transparent;color:var(--lake);font:700 18px/1 var(--body);cursor:pointer}
+.qty output{min-width:22px;text-align:center;font-weight:700}
+.when{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:14px}
+.when label{display:grid;gap:4px;font-size:14px;color:var(--muted)}
+.when select,.when input{font:500 16px var(--body);padding:9px 10px;border:2px solid rgba(22,66,79,.5);border-radius:8px;background:#fffaf2;color:var(--ink);min-height:44px;width:100%}
+.preview{margin:14px 0 0;padding:12px 14px;background:#fffaf2;border:1.5px dashed var(--lakel);border-radius:8px;font:600 21px/1.25 var(--hand);color:var(--lake2)}
+.order .back .bigstamp{width:100%;max-width:260px;margin:4px auto 10px;display:block}
+
+/* ---------- story / reviews ---------- */
+.timeline{list-style:none;margin:6px 0 0;padding:0;border-left:2px dashed var(--apricot);padding-left:18px}
+.timeline li{margin:0 0 14px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-26px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--apricot);border:3px solid var(--paper)}
+.timeline b{font:700 26px/1 var(--hand);color:var(--lake);display:block}
+.themes{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+.themes li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;align-items:start}
+.themes li svg{width:34px;height:34px}
+.score{display:flex;align-items:baseline;gap:10px;margin:6px 0 2px}
+.score strong{font:400 54px/1 var(--disp);color:var(--apricot)}
+
+/* ---------- hours ---------- */
+.marks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:10px 0 12px}
+.mark{aspect-ratio:1;border:2.5px solid var(--lake);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--lake);transform:rotate(var(--r,-6deg));padding:4px}
+.mark b{font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase}
+.mark span{font:700 19px/1.05 var(--hand)}
+.mark.closed{border-style:dashed;opacity:.55}
+.mark.now{background:var(--lake);color:var(--paper)}
+.mapbox{height:300px;border-radius:6px;overflow:hidden;border:1.5px solid rgba(22,66,79,.35);margin-top:12px;background:#e6dccb}
+
+/* ---------- footer envelope ---------- */
+footer{position:relative;margin:40px auto 0;max-width:1120px;padding:0 110px 70px 0}
+.env{position:relative;background:var(--paper2);border-radius:6px;padding:70px clamp(20px,4vw,48px) 34px;overflow:hidden;box-shadow:0 18px 40px -12px rgba(0,0,0,.45)}
+.env::before{content:"";position:absolute;left:0;right:0;top:0;height:60px;background:linear-gradient(to bottom right,transparent 49.6%,rgba(42,33,28,.12) 50%) left/50% 100% no-repeat,linear-gradient(to bottom left,transparent 49.6%,rgba(42,33,28,.12) 50%) right/50% 100% no-repeat}
+.env .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.env h2{font:400 34px/1 var(--disp);color:var(--lake);margin:0 0 8px}
+.env p{margin:0 0 6px}
+.airmail{height:10px;margin:22px -60px 0;background:repeating-linear-gradient(45deg,var(--apricot) 0 16px,var(--paper2) 16px 26px,var(--lakel) 26px 42px,var(--paper2) 42px 52px)}
+
+/* ---------- stamp nav ---------- */
+.stamps{position:fixed;z-index:20;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+.stamps a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:74px;height:84px;background:var(--paper);text-decoration:none;color:var(--lake);font:700 10.5px/1.1 var(--body);letter-spacing:.04em;text-align:center;padding:6px 4px;border:4px dotted var(--lake2);background-clip:padding-box;box-shadow:0 6px 14px -6px rgba(0,0,0,.5);transition:transform .2s}
+.stamps a svg{width:34px;height:34px;margin-bottom:4px}
+.stamps a:hover,.stamps a.cur{transform:rotate(-5deg) scale(1.06);background:var(--apricot);color:var(--ink)}
+.stamps a.wa{background:var(--lakel);color:var(--lake2)}
+
+@media (max-width:1000px){
+  .pc{grid-template-columns:minmax(0,1fr);padding-right:0}
+  footer{padding-right:0;padding-bottom:110px}
+  .stamps{top:auto;bottom:0;left:0;right:0;transform:none;flex-direction:row;gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:var(--lake2);overflow-x:auto;scrollbar-width:none}
+  .stamps::-webkit-scrollbar{display:none}
+  .stamps a{flex:none;width:62px;height:60px;font-size:10px}
+  .stamps a svg{width:24px;height:24px;margin-bottom:2px}
+  body{padding-bottom:78px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .front,.hero .front,.flip{height:420px}
+  .order .front{min-height:0}
+  .front,.back,.flip,.pc:nth-of-type(even) .front,.pc:nth-of-type(even) .back{transform:none}
+  .divline,.env .cols{grid-template-columns:minmax(0,1fr)}
+  .divline > :last-child{border-left:0;padding-left:0;border-top:1.5px solid rgba(42,33,28,.25);padding-top:12px}
+  .postmark{width:104px;height:104px;right:12px;bottom:58px}
+  .back h2{padding-right:80px}
+  .stamp-corner{width:62px;height:74px;top:14px;right:14px}
+  .when{grid-template-columns:minmax(0,1fr)}
+  .menu li{flex-wrap:wrap;column-gap:8px;row-gap:0}
+  .menu li em:not(:empty){flex-basis:100%;text-align:left;margin:-2px 0 4px}
+  .marks{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+  .mark span{font-size:15px} .mark b{font-size:10px}
+  .banner{font-size:13px;padding:10px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .postmark .ring{animation:none}
+  .flip .inner,#jug,.stamps a{transition:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="stampart" viewBox="0 0 78 92">
+      <rect x="1" y="1" width="76" height="90" fill="#F3ECDF" stroke="#16424F" stroke-width="2" stroke-dasharray="3 3"/>
+      <rect x="8" y="8" width="62" height="62" fill="#6FA9B4"/>
+      <circle cx="39" cy="34" r="10" fill="#E77C4E"/>
+      <path d="M8 50 L26 30 L36 42 L48 24 L70 50 Z" fill="#16424F"/>
+      <rect x="8" y="50" width="62" height="20" fill="#0F3340"/>
+      <path d="M16 58 h14 M40 62 h20 M22 66 h10" stroke="#E77C4E" stroke-width="2"/>
+      <text x="39" y="84" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="9" font-weight="700" fill="#16424F" letter-spacing="1">OUCHY</text>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="banner">
+  <p><span data-fr>Maquette proposée par Felix Hancock — site non officiel</span><span data-en>Proposed mock-up by Felix Hancock — not the official site</span></p>
+  <button class="lang" type="button" id="lang" aria-pressed="false"><span data-fr>EN</span><span data-en>FR</span></button>
+</div>
+
+<nav class="stamps" aria-label="Sections">
+  <a href="#bonjour"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="13" r="6" fill="#E77C4E"/><path d="M2 24h30M6 28h22M10 32h14" stroke="currentColor" stroke-width="2.4" fill="none"/></svg><span data-fr>Bonjour</span><span data-en>Hello</span></a>
+  <a href="#carte"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M5 12h20v8a10 10 0 0 1-20 0z" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M25 14h3a3 3 0 0 1 0 6h-3" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M11 5c0 2 2 2 2 4M17 5c0 2 2 2 2 4" stroke="currentColor" stroke-width="2" fill="none"/></svg><span data-fr>La carte</span><span data-en>Menu</span></a>
+  <a href="#emporter" class="wa"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 11h18l-2 20H10z" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M13 11a4 4 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="2.4"/></svg><span data-fr>À emporter</span><span data-en>Takeaway</span></a>
+  <a href="#histoire"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="8" cy="25" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="27" cy="25" r="5" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="3" y="9" width="13" height="10" fill="currentColor"/><path d="M8 25l8-6h6l5 6M22 19l-2-6h4" stroke="currentColor" stroke-width="2.4" fill="none"/></svg><span data-fr>Histoire</span><span data-en>Story</span></a>
+  <a href="#avis"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4l3.8 8.3 9 .9-6.8 6 2 8.8L17 23.5 9 28l2-8.8-6.8-6 9-.9z" fill="currentColor"/></svg><span data-fr>Avis</span><span data-en>Reviews</span></a>
+  <a href="#horaires"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="13" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M17 9v8l6 4" stroke="currentColor" stroke-width="2.4" fill="none"/></svg><span data-fr>Horaires</span><span data-en>Hours</span></a>
+</nav>
+
+<!-- Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (noise-texture: paper grain on .grain) -->
+<main class="grain">
+
+<!-- 1 · BONJOUR -->
+<section class="pc hero" id="bonjour" aria-labelledby="t1">
+  <p class="label"><b>N° 1</b><span data-fr>Carte postale d'Ouchy</span><span data-en>A postcard from Ouchy</span></p>
+  <div class="flip" id="flip">
+    <div class="inner">
+      <div class="card front face">
+        <svg class="scene" viewBox="0 0 600 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3ECDF"/><stop offset=".55" stop-color="#F6C9A8"/><stop offset="1" stop-color="#E9A27C"/></linearGradient>
+            <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6FA9B4"/><stop offset="1" stop-color="#16424F"/></linearGradient>
+          </defs>
+          <rect width="600" height="560" fill="url(#sky)"/>
+          <circle cx="300" cy="262" r="46" fill="#E77C4E"/>
+          <path d="M0 330 L70 270 L120 300 L190 220 L250 285 L300 250 L360 300 L430 210 L500 280 L560 245 L600 280 L600 360 L0 360Z" fill="#8FBCC4"/>
+          <path d="M190 220 l18 22 -12 -4 -8 10 -10 -8 -8 4z M430 210 l20 24 -12 -3 -9 9 -9 -10 -10 5z" fill="#F3ECDF" opacity=".9"/>
+          <path d="M0 312 L90 300 L170 318 L260 306 L340 320 L420 300 L520 316 L600 304 L600 360 L0 360Z" fill="#4E8A97"/>
+          <rect y="350" width="600" height="210" fill="url(#lake)"/>
+          <g fill="#F6C9A8" opacity=".8"><rect x="262" y="366" width="76" height="4" rx="2"/><rect x="276" y="382" width="48" height="4" rx="2"/><rect x="286" y="398" width="28" height="3" rx="1.5"/><rect x="292" y="412" width="16" height="3" rx="1.5"/></g>
+          <g fill="none" stroke="#F3ECDF" stroke-width="2" opacity=".35"><path d="M40 420h60M140 450h80M420 430h70M470 470h60M60 500h50"/></g>
+          <!-- quay with arcade -->
+          <rect y="500" width="600" height="60" fill="#2A211C" opacity=".85"/>
+          <g fill="#F3ECDF" opacity=".18"><path d="M30 560v-30a18 18 0 0 1 36 0v30zM90 560v-30a18 18 0 0 1 36 0v30zM150 560v-30a18 18 0 0 1 36 0v30zM414 560v-30a18 18 0 0 1 36 0v30zM474 560v-30a18 18 0 0 1 36 0v30zM534 560v-30a18 18 0 0 1 36 0v30z"/></g>
+          <!-- tiny sail -->
+          <path d="M470 400 l0 -46 26 46z" fill="#F3ECDF"/><path d="M462 402h40l-6 8h-28z" fill="#2A211C"/>
+        </svg>
+        <div class="hero-title">
+          <small><span data-fr>Bons baisers d'Ouchy</span><span data-en>Greetings from Ouchy</span></small>
+          <h1 id="t1">Contemplation</h1>
+          <p><span data-fr>Café de spécialité · Lausanne</span><span data-en>Specialty coffee · Lausanne</span></p>
+        </div>
+        <!-- Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (spinning-text: rotating postmark) -->
+        <svg class="postmark" viewBox="0 0 140 140" aria-hidden="true">
+          <circle cx="70" cy="70" r="40" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="70" cy="70" r="66" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 4"/>
+          <text x="70" y="66" text-anchor="middle" style="font-size:13px;letter-spacing:.1em">1006</text>
+          <text x="70" y="84" text-anchor="middle" style="font-size:10px;letter-spacing:.1em">LAUSANNE</text>
+          <g class="ring"><path id="circ" d="M70 70 m-53 0 a53 53 0 1 1 106 0 a53 53 0 1 1 -106 0" fill="none"/>
+          <text><textPath href="#circ" textLength="330">CAFÉ DE SPÉCIALITÉ · OUCHY · LAUSANNE ·</textPath></text></g>
+        </svg>
+        <button class="fliptab" type="button" id="fliptab" aria-controls="verso" aria-expanded="false"><span data-fr>↻ Retourner la carte</span><span data-en>↻ Flip the card</span></button>
+      </div>
+      <div class="card face verso" id="verso" aria-hidden="true">
+        <h2><span data-fr>Au dos</span><span data-en>On the back</span></h2>
+        <p class="today" id="today"><span data-fr>Ouvert du mercredi au dimanche</span><span data-en>Open Wednesday to Sunday</span></p>
+        <p class="hand">Av. d'Ouchy 76, 1006 Lausanne<br><span data-fr>à deux pas du métro Ouchy–Olympique</span><span data-en>steps from Ouchy–Olympique metro</span></p>
+        <div class="btns">
+          <a class="btn wa" tabindex="-1" href="#emporter"><span data-fr>Commander à emporter</span><span data-en>Order takeaway</span></a>
+          <a class="btn ghost" tabindex="-1" href="tel:+41792427979"><span data-fr>Appeler</span><span data-en>Call</span></a>
+        </div>
+        <button class="btn ghost small" type="button" id="flipback" tabindex="-1" style="margin-top:14px;align-self:flex-start">↻ <span data-fr>Revoir le lac</span><span data-en>Back to the lake</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="card back">
+    <svg class="stamp-corner" aria-hidden="true"><use href="#stampart"/></svg>
+    <h2><span data-fr>Un café face au lac</span><span data-en>A coffee by the lake</span></h2>
+    <div class="divline">
+      <div>
+        <p class="hand"><span data-fr>Un petit café de spécialité sous les arcades de l'avenue d'Ouchy, entre le métro et les quais.</span><span data-en>A small specialty coffee shop under the arcades of Avenue d'Ouchy, between the metro and the lakefront.</span></p>
+        <p><span data-fr>Espresso, café filtre, matcha et pâtisseries maison inspirées de recettes de famille — sur place, sur une dizaine de places, ou à emporter pour la balade.</span><span data-en>Espresso, filter coffee, matcha and homemade bakes from family recipes — at one of about ten seats, or to take away for a lakeside walk.</span></p>
+        <div class="btns">
+          <a class="btn wa" href="#emporter"><span data-fr>Commander à emporter</span><span data-en>Order takeaway</span></a>
+          <a class="btn ghost" href="tel:+41792427979">079 242 79 79</a>
+        </div>
+      </div>
+      <div class="addr" aria-label="Adresse">
+        <span class="l">Café Contemplation</span>
+        <span class="l">Avenue d'Ouchy 76</span>
+        <span class="l">1006 Lausanne</span>
+        <span class="l"><a href="#horaires"><span data-fr>me – di</span><span data-en>Wed – Sun</span></a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · LA CARTE -->
+<section class="pc" id="carte" aria-labelledby="t2">
+  <p class="label"><b>N° 2</b><span data-fr>Ce qu'on boit, ce qu'on croque</span><span data-en>What to sip, what to nibble</span></p>
+  <div class="card front">
+    <div class="cupwrap" id="pourbox">
+      <svg id="cup" viewBox="0 0 400 400" role="img" aria-labelledby="cuplbl">
+        <title id="cuplbl">Une tasse de cappuccino vue du dessus ; le dessin de lait (latte art) se forme quand on verse.</title>
+        <defs>
+          <radialGradient id="crema" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#B9773F"/><stop offset=".7" stop-color="#7A4523"/><stop offset="1" stop-color="#4E2A15"/></radialGradient>
+          <clipPath id="cupclip"><circle cx="190" cy="215" r="112"/></clipPath>
+        </defs>
+        <circle cx="190" cy="218" r="176" fill="#F3ECDF" stroke="#16424F" stroke-width="3"/>
+        <circle cx="190" cy="218" r="150" fill="none" stroke="#16424F" stroke-opacity=".2" stroke-width="2"/>
+        <path d="M318 200 h40 a22 22 0 0 1 0 44 h-40" fill="none" stroke="#FBF7F0" stroke-width="20"/>
+        <path d="M318 200 h40 a22 22 0 0 1 0 44 h-40" fill="none" stroke="#16424F" stroke-width="3"/>
+        <circle cx="190" cy="215" r="132" fill="#FBF7F0" stroke="#16424F" stroke-width="3"/>
+        <circle cx="190" cy="215" r="112" fill="url(#crema)"/>
+        <g clip-path="url(#cupclip)" fill="#F7ECDC" id="art">
+          <path id="l1" d="M100 250 C110 300 270 300 280 250 C262 272 118 272 100 250Z" stroke="#7A4523" stroke-width="3"/>
+          <path id="l2" d="M116 222 C124 262 256 262 264 222 C248 240 132 240 116 222Z" stroke="#7A4523" stroke-width="3"/>
+          <path id="l2b" d="M132 196 C138 228 242 228 248 196 C232 210 148 210 132 196Z" stroke="#7A4523" stroke-width="3"/>
+          <path id="l3" d="M190 196 C170 178 144 172 146 152 C148 134 174 132 190 150 C206 132 232 134 234 152 C236 172 210 178 190 196Z" stroke="#7A4523" stroke-width="3"/>
+          <path id="cut" d="M190 138 L190 300" stroke="#7A4523" stroke-width="4" stroke-linecap="round" fill="none" pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/>
+        </g>
+        <rect id="stream" x="186" y="60" width="8" height="160" rx="4" fill="#F7ECDC"/>
+        <g id="jug">
+          <path d="M278 40 h70 l-6 90 h-58z" fill="#C9D3D6" stroke="#16424F" stroke-width="3"/>
+          <path d="M278 40 l-18 -6 l6 16z" fill="#C9D3D6" stroke="#16424F" stroke-width="3"/>
+          <path d="M348 60 q22 4 14 40 q-4 8 -14 6" fill="none" stroke="#16424F" stroke-width="5"/>
+        </g>
+      </svg>
+      <button class="pour" type="button" id="pour" aria-pressed="false" aria-describedby="pourmsg"><span data-fr>Maintenir pour verser le lait</span><span data-en>Press &amp; hold to pour the milk</span></button>
+      <p class="pourmsg" id="pourmsg" aria-live="polite"></p>
+    </div>
+  </div>
+  <div class="card back">
+    <svg class="stamp-corner" aria-hidden="true"><use href="#stampart"/></svg>
+    <h2><span data-fr>La carte</span><span data-en>The menu</span></h2>
+    <p class="note"><span data-fr>Carte indicative, d'après la presse et les avis — <span class="tbc">à confirmer</span>. Prix au comptoir.</span><span data-en>Indicative menu from press and reviews — <span class="tbc">to be confirmed</span>. Prices at the counter.</span></p>
+    <h3><span data-fr>Café</span><span data-en>Coffee</span></h3>
+    <ul class="menu">
+      <li>Espresso · americano <i></i><em></em></li>
+      <li>Cappuccino · flat white · latte <i></i><em><span data-fr>latte art</span><span data-en>latte art</span></em></li>
+      <li><span data-fr>Café filtre (batch brew)</span><span data-en>Filter coffee (batch brew)</span> <i></i><em></em></li>
+      <li>Espresso tonic <i></i><em></em></li>
+      <li>Espresso sunrise <i></i><em><span data-fr>shot + jus d'orange</span><span data-en>shot + orange juice</span></em></li>
+    </ul>
+    <h3><span data-fr>Thé &amp; matcha</span><span data-en>Tea &amp; matcha</span></h3>
+    <ul class="menu">
+      <li>Matcha <i></i><em><span data-fr>lavande · rose · fraise</span><span data-en>lavender · rose · strawberry</span></em></li>
+      <li>Hojicha latte <i></i><em></em></li>
+      <li><span data-fr>Collection Earl Grey</span><span data-en>Earl Grey collection</span> <i></i><em></em></li>
+    </ul>
+    <h3><span data-fr>À croquer</span><span data-en>To nibble</span></h3>
+    <ul class="menu">
+      <li>Kola-Czech <i></i><em><span data-fr>recette de la grand-mère d'Adéla</span><span data-en>Adéla's grandmother's recipe</span></em></li>
+      <li>Cookie de la nonna <i></i><em><span data-fr>recette de la grand-mère de Lloyd</span><span data-en>Lloyd's grandmother's recipe</span></em></li>
+      <li><span data-fr>Viennoiseries</span><span data-en>Pastries</span> <i></i><em><span data-fr>d'une boulangerie de Pully</span><span data-en>from a bakery in Pully</span></em></li>
+    </ul>
+    <p class="note" style="margin-top:12px"><span data-fr>Grains d'un torréfacteur artisanal tchèque et d'un torréfacteur genevois.</span><span data-en>Beans from an artisan Czech roaster and a Geneva roaster.</span></p>
+  </div>
+</section>
+
+<!-- 3 · À EMPORTER -->
+<section class="pc order" id="emporter" aria-labelledby="t3">
+  <p class="label"><b>N° 3</b><span data-fr>Une carte à nous envoyer</span><span data-en>A card to send us</span></p>
+  <div class="card front">
+    <svg class="stamp-corner" aria-hidden="true"><use href="#stampart"/></svg>
+    <h2 id="t3"><span data-fr>À emporter</span><span data-en>Takeaway</span></h2>
+    <p class="note"><span data-fr>Choisissez, on prépare le message WhatsApp pour vous. Rien n'est payé en ligne.</span><span data-en>Pick your order and we write the WhatsApp message for you. Nothing is paid online.</span></p>
+    <ul class="pick" id="pick">
+      <li data-item="Cappuccino"><span class="nm">Cappuccino</span><span class="qty"><button type="button" data-d="-1" aria-label="moins">−</button><output>0</output><button type="button" data-d="1" aria-label="plus">+</button></span></li>
+      <li data-item="Flat white"><span class="nm">Flat white</span><span class="qty"><button type="button" data-d="-1" aria-label="moins">−</button><output>0</output><button type="button" data-d="1" aria-label="plus">+</button></span></li>
+      <li data-item="Café filtre"><span class="nm"><span data-fr>Café filtre</span><span data-en>Filter coffee</span></span><span class="qty"><button type="button" data-d="-1" aria-label="moins">−</button><output>0</output><button type="button" data-d="1" aria-label="plus">+</button></span></li>
+      <li data-item="Matcha latte"><span class="nm">Matcha latte</span><span class="qty"><button type="button" data-d="-1" aria-label="moins">−</button><output>0</output><button type="button" data-d="1" aria-label="plus">+</button></span></li>
+      <li data-item="Hojicha latte"><span class="nm">Hojicha latte</span><span class="qty"><button type="button" data-d="-1" aria-label="moins">−</button><output>0</output><button type="button" data-d="1" aria-label="plus">+</button></span></li>
+      <li data-item="Kola-Czech"><span class="nm">Kola-Czech</span><span class="qty"><button type="button" data-d="-1" aria-label="moins">−</button><output>0</output><button type="button" data-d="1" aria-label="plus">+</button></span></li>
+      <li data-item="Cookie de la nonna"><span class="nm">Cookie de la nonna</span><span class="qty"><button type="button" data-d="-1" aria-label="moins">−</button><output>0</output><button type="button" data-d="1" aria-label="plus">+</button></span></li>
+    </ul>
+    <div class="when">
+      <label><span><span data-fr>Jour</span><span data-en>Day</span></span>
+        <select id="day">
+          <option value="dès que possible">Dès que possible / ASAP</option>
+          <option value="mercredi">Mercredi / Wednesday</option>
+          <option value="jeudi">Jeudi / Thursday</option>
+          <option value="vendredi">Vendredi / Friday</option>
+          <option value="samedi">Samedi / Saturday</option>
+          <option value="dimanche">Dimanche / Sunday</option>
+        </select></label>
+      <label><span><span data-fr>Heure (facultatif)</span><span data-en>Time (optional)</span></span><input type="time" id="time" min="07:30" max="17:00" step="900"></label>
+    </div>
+    <p class="preview" id="preview" aria-live="polite">Bonjour, je voudrais commander à emporter. (vu sur votre site)</p>
+    <div class="btns">
+      <a class="btn wa" id="wa" href="https://wa.me/41792427979?text=Bonjour%2C%20je%20voudrais%20commander%20%C3%A0%20emporter.%20(vu%20sur%20votre%20site)" target="_blank" rel="noopener"><span data-fr>Commander / réserver sur WhatsApp</span><span data-en>Order / reserve on WhatsApp</span></a>
+    </div>
+    <p class="note" style="margin-top:10px"><span data-fr>Paiement sur place, par carte (le café est cashless).</span><span data-en>Pay in store, by card (the café is cashless).</span></p>
+  </div>
+  <div class="card back">
+    <h2><span data-fr>Comment ça marche</span><span data-en>How it works</span></h2>
+    <svg class="bigstamp" viewBox="0 0 260 150" aria-hidden="true">
+      <rect x="4" y="4" width="252" height="142" rx="6" fill="#FBF7F0" stroke="#16424F" stroke-width="2" stroke-dasharray="6 5"/>
+      <path d="M30 40 h120 M30 62 h150 M30 84 h100" stroke="#2A211C" stroke-opacity=".3" stroke-width="3"/>
+      <g transform="translate(196 76) rotate(-12)"><circle r="40" fill="none" stroke="#E77C4E" stroke-width="3"/><text text-anchor="middle" y="-6" font-family="Instrument Sans,sans-serif" font-size="9" font-weight="700" fill="#E77C4E" letter-spacing=".5">À EMPORTER</text><text text-anchor="middle" y="12" font-family="Caveat,cursive" font-size="20" font-weight="700" fill="#E77C4E">Ouchy</text></g>
+      <path d="M30 112 q30 -20 60 0 t60 0" fill="none" stroke="#6FA9B4" stroke-width="3"/>
+    </svg>
+    <ol class="timeline" style="list-style:none">
+      <li><b>1</b><span data-fr>Vous choisissez boissons et pâtisseries, et un jour.</span><span data-en>Pick drinks, bakes and a day.</span></li>
+      <li><b>2</b><span data-fr>WhatsApp s'ouvre avec votre message prêt — vous l'envoyez vous-même.</span><span data-en>WhatsApp opens with the message ready — you send it yourself.</span></li>
+      <li><b>3</b><span data-fr>Adéla &amp; Lloyd confirment, vous passez prendre votre commande.</span><span data-en>Adéla &amp; Lloyd confirm, you pick up your order.</span></li>
+    </ol>
+    <p class="note"><span data-fr>Pas de WhatsApp&nbsp;? Appelez le</span><span data-en>No WhatsApp? Call</span> <a href="tel:+41792427979">079 242 79 79</a>.</p>
+  </div>
+</section>
+
+<!-- 4 · HISTOIRE -->
+<section class="pc" id="histoire" aria-labelledby="t4">
+  <p class="label"><b>N° 4</b><span data-fr>De Genève à Ouchy</span><span data-en>From Geneva to Ouchy</span></p>
+  <div class="card front">
+    <svg class="scene" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="600" height="520" fill="#6FA9B4"/>
+      <g fill="#F3ECDF" opacity=".9">
+        <path d="M0 520 V120 h600 V520 h-40 V250 a60 60 0 0 0 -120 0 V520 h-40 V250 a60 60 0 0 0 -120 0 V520 h-40 V250 a60 60 0 0 0 -120 0 V520z"/>
+      </g>
+      <rect y="100" width="600" height="28" fill="#16424F"/>
+      <text x="300" y="120" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="14" font-weight="700" letter-spacing="6" fill="#F3ECDF">AVENUE D'OUCHY</text>
+      <rect y="470" width="600" height="50" fill="#2A211C" opacity=".8"/>
+      <!-- triporteur -->
+      <g transform="translate(130 300)">
+        <rect x="0" y="40" width="150" height="100" rx="8" fill="#E77C4E" stroke="#2A211C" stroke-width="4"/>
+        <rect x="14" y="54" width="122" height="30" rx="4" fill="#F3ECDF"/>
+        <text x="75" y="75" text-anchor="middle" font-family="Shrikhand,serif" font-size="17" fill="#16424F">café</text>
+        <path d="M60 40 v-18 h30 v18" fill="none" stroke="#2A211C" stroke-width="4"/>
+        <circle cx="30" cy="170" r="26" fill="none" stroke="#2A211C" stroke-width="6"/>
+        <circle cx="122" cy="170" r="26" fill="none" stroke="#2A211C" stroke-width="6"/>
+        <circle cx="290" cy="170" r="26" fill="none" stroke="#2A211C" stroke-width="6"/>
+        <path d="M150 120 L215 120 L290 170 M215 120 L235 60 M222 60 h30 M215 120 L205 90 M196 88 h26" fill="none" stroke="#2A211C" stroke-width="6" stroke-linecap="round"/>
+        <path d="M150 140 h20" stroke="#2A211C" stroke-width="6"/>
+      </g>
+    </svg>
+    <p class="caption top"><span data-fr>Le triporteur, puis l'arcade</span><span data-en>First the cargo bike, then the arcade</span></p>
+  </div>
+  <div class="card back">
+    <svg class="stamp-corner" aria-hidden="true"><use href="#stampart"/></svg>
+    <h2 id="t4"><span data-fr>Leur histoire</span><span data-en>Their story</span></h2>
+    <ol class="timeline">
+      <li><b>2024</b><span data-fr>Adéla et Lloyd testent leur idée à Genève, avec un café sur triporteur dans l'espace public.</span><span data-en>Adéla and Lloyd test their idea in Geneva, with a coffee cargo bike in public spaces.</span></li>
+      <li><b>2026</b><span data-fr>Le café trouve un toit&nbsp;: une arcade de l'avenue d'Ouchy, à deux pas du lac.</span><span data-en>The café finds a home: an arcade on Avenue d'Ouchy, a few steps from the lake.</span></li>
+      <li><b><span data-fr>Aujourd'hui</span><span data-en>Today</span></b><span data-fr>Lloyd au comptoir côté barista, Adéla côté pâtisseries maison.</span><span data-en>Lloyd behind the counter as barista, Adéla on the homemade bakes.</span></li>
+    </ol>
+    <p class="hand"><span data-fr>Et Joey, le boston terrier, officiellement «&nbsp;Mascot &amp; Supervisor&nbsp;».</span><span data-en>And Joey the Boston terrier, officially “Mascot &amp; Supervisor”.</span></p>
+    <p class="note"><span data-fr>Sources&nbsp;: presse locale (watson.ch) — détails <span class="tbc">à confirmer</span>.</span><span data-en>Sources: local press (watson.ch) — details <span class="tbc">to be confirmed</span>.</span></p>
+  </div>
+</section>
+
+<!-- 5 · AVIS -->
+<section class="pc" id="avis" aria-labelledby="t5">
+  <p class="label"><b>N° 5</b><span data-fr>Ce que racontent les clients</span><span data-en>What customers write home about</span></p>
+  <div class="card front">
+    <svg class="scene" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="600" height="520" fill="#F6C9A8"/>
+      <rect y="250" width="600" height="270" fill="#16424F"/>
+      <path d="M0 250 L80 200 L160 236 L250 170 L330 230 L420 180 L520 230 L600 200 V250Z" fill="#4E8A97"/>
+      <path d="M0 400 Q300 340 600 400 V520 H0Z" fill="#CFA57A"/>
+      <g stroke="#2A211C" stroke-width="7" stroke-linecap="round" fill="none">
+        <path d="M200 400 h200 M210 380 h180 M220 400 v40 M380 400 v40"/>
+      </g>
+      <g transform="translate(300 300)">
+        <path d="M-26 -10 h52 l-6 56 h-40z" fill="#F3ECDF" stroke="#2A211C" stroke-width="4"/>
+        <rect x="-30" y="-18" width="60" height="10" rx="3" fill="#2A211C"/>
+        <path d="M-12 -32 c0 -8 8 -8 8 -16 M6 -32 c0 -8 8 -8 8 -16" stroke="#F3ECDF" stroke-width="3" fill="none"/>
+      </g>
+    </svg>
+    <p class="caption"><span data-fr>Un café pour la balade le long du lac</span><span data-en>A coffee for the lakeside walk</span></p>
+  </div>
+  <div class="card back">
+    <svg class="stamp-corner" aria-hidden="true"><use href="#stampart"/></svg>
+    <h2 id="t5"><span data-fr>Les avis</span><span data-en>Reviews</span></h2>
+    <div class="score"><strong>4,9</strong><span><span data-fr>sur 5 · environ 195 avis Google (nov. 2026)</span><span data-en>out of 5 · about 195 Google reviews (Nov 2026)</span></span></div>
+    <p class="note"><span data-fr>Thèmes qui reviennent, d'après les avis Google (résumés, pas des citations)&nbsp;:</span><span data-en>Recurring themes, based on Google reviews (summarised, not quotes):</span></p>
+    <ul class="themes">
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="14" fill="#7A4523"/><path d="M17 9c-5 4-5 9 0 14 5-5 5-10 0-14z" fill="#F7ECDC"/></svg><span><span data-fr>Des cappuccinos remarquables&nbsp;: lait bien texturé et latte art soigné.</span><span data-en>Outstanding cappuccinos: well-textured milk and neat latte art.</span></span></li>
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M9 8h16l-4 10h-8z" fill="none" stroke="#16424F" stroke-width="2.5"/><path d="M11 22h12v6H11z" fill="#16424F"/></svg><span><span data-fr>Un café filtre (batch brew) souvent recommandé.</span><span data-en>A filter coffee (batch brew) people often recommend.</span></span></li>
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="12" cy="13" r="5" fill="#E77C4E"/><circle cx="23" cy="13" r="5" fill="#E77C4E"/><path d="M4 30c1-7 6-9 8-9s7 2 8 9M15 30c1-7 6-9 8-9s7 2 8 9" fill="#E77C4E"/></svg><span><span data-fr>Un couple chaleureux, deux très bons baristas.</span><span data-en>A warm couple, both excellent baristas.</span></span></li>
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M4 30V14a13 13 0 0 1 26 0v16" fill="none" stroke="#16424F" stroke-width="2.5"/><path d="M4 30h26" stroke="#16424F" stroke-width="2.5"/></svg><span><span data-fr>Un lieu petit et cosy, pratique près du métro d'Ouchy — idéal avant une balade au bord du lac.</span><span data-en>Small and cosy, handy by the Ouchy metro — ideal before a lakeside walk.</span></span></li>
+      <li><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 10h18v10a9 9 0 0 1-18 0z" fill="#8FB98A"/></svg><span><span data-fr>Matcha et hojicha lattes appréciés.</span><span data-en>Well-liked matcha and hojicha lattes.</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6 · HORAIRES -->
+<section class="pc" id="horaires" aria-labelledby="t6">
+  <p class="label"><b>N° 6</b><span data-fr>Quand passer</span><span data-en>When to drop by</span></p>
+  <div class="card back" style="transform:rotate(-.8deg)">
+    <h2 id="t6"><span data-fr>Horaires</span><span data-en>Opening hours</span></h2>
+    <div class="marks" id="marks">
+      <div class="mark" data-d="3" style="--r:-8deg"><b><span data-fr>Mer</span><span data-en>Wed</span></b><span>7:30<br>16:00</span></div>
+      <div class="mark" data-d="4" style="--r:5deg"><b><span data-fr>Jeu</span><span data-en>Thu</span></b><span>7:30<br>16:00</span></div>
+      <div class="mark" data-d="5" style="--r:-3deg"><b><span data-fr>Ven</span><span data-en>Fri</span></b><span>7:30<br>16:00</span></div>
+      <div class="mark" data-d="6" style="--r:7deg"><b><span data-fr>Sam</span><span data-en>Sat</span></b><span>9:00<br>17:00</span></div>
+      <div class="mark" data-d="0" style="--r:-6deg"><b><span data-fr>Dim</span><span data-en>Sun</span></b><span>9:00<br>17:00</span></div>
+      <div class="mark closed" data-d="1" style="--r:4deg"><b><span data-fr>Lun</span><span data-en>Mon</span></b><span><span data-fr>fermé</span><span data-en>closed</span></span></div>
+      <div class="mark closed" data-d="2" style="--r:-4deg"><b><span data-fr>Mar</span><span data-en>Tue</span></b><span><span data-fr>fermé</span><span data-en>closed</span></span></div>
+    </div>
+    <p class="note"><span data-fr>D'après Google (novembre 2026) — <span class="tbc">à confirmer</span>, notamment les jours fériés.</span><span data-en>From Google (November 2026) — <span class="tbc">to be confirmed</span>, especially on public holidays.</span></p>
+    <p class="note"><span data-fr>Paiement par carte uniquement (cashless).</span><span data-en>Card payments only (cashless).</span></p>
+  </div>
+  <div class="card back" style="transform:rotate(.7deg)">
+    <svg class="stamp-corner" aria-hidden="true"><use href="#stampart"/></svg>
+    <h2><span data-fr>Venir</span><span data-en>Find us</span></h2>
+    <p class="addr">Avenue d'Ouchy 76<br>1006 Lausanne</p>
+    <p><span data-fr>Métro M2, arrêt Ouchy–Olympique, puis quelques pas.</span><span data-en>M2 metro to Ouchy–Olympique, then a short walk.</span></p>
+    <div class="btns">
+      <a class="btn wa" href="https://www.google.com/maps/dir/?api=1&amp;destination=Avenue%20d%27Ouchy%2076%2C%201006%20Lausanne" target="_blank" rel="noopener"><span data-fr>Itinéraire</span><span data-en>Directions</span></a>
+      <a class="btn ghost" href="tel:+41792427979"><span data-fr>Appeler</span><span data-en>Call</span> 079 242 79 79</a>
+    </div>
+    <div class="mapbox">
+      <button type="button" class="map-consent" data-src="https://maps.google.com/maps?q=Avenue%20d%27Ouchy%2076%2C%201006%20Lausanne&amp;output=embed" data-title="Carte"><b><span data-fr>Afficher la carte</span><span data-en>Show the map</span></b><small><span data-fr>La carte est chargée depuis Google Maps seulement si vous cliquez.</span><span data-en>The map loads from Google Maps only when you click.</span></small></button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="env grain">
+    <div class="cols">
+      <div>
+        <h2>Café Contemplation</h2>
+        <p>Avenue d'Ouchy 76, 1006 Lausanne</p>
+        <p><a href="tel:+41792427979">079 242 79 79</a> · Instagram @cafecontemplation</p>
+      </div>
+      <div>
+        <p><strong><span data-fr>Maquette proposée par Felix Hancock — site non officiel.</span><span data-en>Proposed mock-up by Felix Hancock — not the official site.</span></strong></p>
+        <p class="note"><span data-fr>Illustrations dessinées pour cette maquette. Aucun cookie, aucun suivi.</span><span data-en>Illustrations drawn for this mock-up. No cookies, no tracking.</span></p>
+      </div>
+    </div>
+    <div class="airmail" aria-hidden="true"></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* language */
+  var lb=document.getElementById('lang');
+  lb.addEventListener('click',function(){var en=document.body.classList.toggle('en');lb.setAttribute('aria-pressed',en);document.documentElement.lang=en?'en':'fr'});
+
+  /* hero flip */
+  var flip=document.getElementById('flip'),tab=document.getElementById('fliptab'),verso=document.getElementById('verso');
+  function setFlip(on){flip.classList.toggle('on',on);tab.setAttribute('aria-expanded',on);verso.setAttribute('aria-hidden',!on);
+    verso.querySelectorAll('a,button').forEach(function(el){el.tabIndex=on?0:-1});
+    if(on){document.getElementById('flipback').focus({preventScroll:true})}else{tab.focus({preventScroll:true})}}
+  tab.addEventListener('click',function(){setFlip(true)});
+  document.getElementById('flipback').addEventListener('click',function(){setFlip(false)});
+
+  /* today */
+  var d=new Date().getDay(), hours={0:'9:00–17:00',3:'7:30–16:00',4:'7:30–16:00',5:'7:30–16:00',6:'9:00–17:00'};
+  var t=document.getElementById('today');
+  t.innerHTML = hours[d] ? '<span data-fr>Aujourd’hui : '+hours[d]+'</span><span data-en>Today: '+hours[d]+'</span>' : '<span data-fr>Fermé aujourd’hui — ouvert du mercredi au dimanche</span><span data-en>Closed today — open Wednesday to Sunday</span>';
+  var m=document.querySelector('.mark[data-d="'+d+'"]'); if(m&&!m.classList.contains('closed')) m.classList.add('now');
+
+  /* latte-art pour (signature) */
+  var box=document.getElementById('pourbox'),btn=document.getElementById('pour'),msg=document.getElementById('pourmsg');
+  var L=['l1','l2','l2b','l3'].map(function(i){return document.getElementById(i)}),cut=document.getElementById('cut');
+  var segs=[[0,.24],[.24,.44],[.44,.62],[.62,.82]],p=0,on=false,last=0,raf=0;
+  L.forEach(function(el){el.style.transformBox='fill-box';el.style.transformOrigin='50% 100%'});
+  function clamp(x){return Math.max(0,Math.min(1,x))}
+  function render(){L.forEach(function(el,i){var s=clamp((p-segs[i][0])/(segs[i][1]-segs[i][0]));el.style.transform='scale('+(s*(1.05-.05*s)).toFixed(3)+')';el.style.opacity=s>0?1:0});
+    cut.style.strokeDashoffset=(100-clamp((p-.84)/.16)*100).toFixed(1)}
+  function say(fr,en){msg.innerHTML='<span data-fr>'+fr+'</span><span data-en>'+en+'</span>'}
+  function tick(ts){if(!on)return;var dt=last?ts-last:16;last=ts;p=clamp(p+dt/3400);render();
+    if(p>=1){stop();say('Une tulipe\u00a0! La vraie se boit avenue d\u2019Ouchy 76.','A tulip! The real one is served at Avenue d\u2019Ouchy 76.');btn.querySelector('[data-fr]').textContent='Recommencer';btn.querySelector('[data-en]').textContent='Start again';return}
+    raf=requestAnimationFrame(tick)}
+  function start(e){if(e)e.preventDefault();if(p>=1){p=0;render();msg.textContent='';btn.querySelector('[data-fr]').textContent='Maintenir pour verser le lait';btn.querySelector('[data-en]').textContent='Press & hold to pour the milk';return}
+    if(reduce){p=1;render();say('Une tulipe !','A tulip!');return}
+    if(on)return;on=true;last=0;box.classList.add('pouring');btn.setAttribute('aria-pressed','true');raf=requestAnimationFrame(tick)}
+  function stop(){if(!on)return;on=false;cancelAnimationFrame(raf);box.classList.remove('pouring');btn.setAttribute('aria-pressed','false');
+    if(p>0&&p<1)say('Continuez à verser…','Keep pouring…')}
+  p=0;render();
+  btn.addEventListener('pointerdown',start);
+  ['pointerup','pointerleave','pointercancel'].forEach(function(ev){btn.addEventListener(ev,stop)});
+  btn.addEventListener('keydown',function(e){if((e.key===' '||e.key==='Enter')&&!e.repeat){start(e)}else if(e.key===' '||e.key==='Enter'){e.preventDefault()}});
+  btn.addEventListener('keyup',function(e){if(e.key===' '||e.key==='Enter')stop()});
+  btn.addEventListener('click',function(e){e.preventDefault()});
+  btn.addEventListener('contextmenu',function(e){e.preventDefault()});
+
+  /* takeaway picker → WhatsApp text */
+  var wa=document.getElementById('wa'),pv=document.getElementById('preview'),day=document.getElementById('day'),tm=document.getElementById('time');
+  function build(){var items=[];document.querySelectorAll('#pick li').forEach(function(li){var n=+li.querySelector('output').value;if(n>0)items.push(n+' × '+li.dataset.item)});
+    var s='Bonjour, je voudrais commander à emporter'+(items.length?' : '+items.join(', '):'');
+    var when=day.value; if(when!=='dès que possible'){s+=' — pour '+when+(tm.value?' vers '+tm.value.replace(':','h'):'')}else{s+=' — dès que possible'+(tm.value?' (vers '+tm.value.replace(':','h')+')':'')}
+    s+='. (vu sur votre site)';pv.textContent=s;wa.href='https://wa.me/41792427979?text='+encodeURIComponent(s)}
+  document.querySelectorAll('#pick .qty button').forEach(function(b){b.addEventListener('click',function(){var o=b.parentNode.querySelector('output');o.value=Math.max(0,Math.min(20,(+o.value)+(+b.dataset.d)));build()})});
+  day.addEventListener('change',build);tm.addEventListener('input',build);
+
+  /* stamp nav highlight */
+  var links=[].slice.call(document.querySelectorAll('.stamps a'));
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('cur',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('main section').forEach(function(s){io.observe(s)})}
+})();
+</script>
+<style>.map-consent{width:100%;height:100%;min-height:260px;border:0;display:grid;place-items:center;gap:8px;padding:20px;background:repeating-linear-gradient(135deg,rgba(0,0,0,.04) 0 12px,transparent 12px 24px);color:inherit;font:inherit;cursor:pointer;text-align:center}.map-consent b{font-size:17px}.map-consent small{opacity:.7;max-width:34ch}</style>
+<script>document.querySelectorAll('.map-consent').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=b.dataset.src;f.title=b.dataset.title||'Carte';f.loading='lazy';f.style.cssText='width:100%;height:100%;min-height:260px;border:0;display:block';f.referrerPolicy='no-referrer-when-downgrade';b.replaceWith(f)})});</script>
+</body>
+</html>
