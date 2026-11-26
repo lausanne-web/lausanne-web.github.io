@@ -76,6 +76,22 @@
         "magicui marquee"
       ],
       "order_button": "WhatsApp shopping-list picker"
+    },
+    {
+      "slug": "boucherie-de-cour",
+      "date": "2026-11-26",
+      "archetype": "menu-board",
+      "nav": "steel meat-hook rail with hanging enamel tags (sticky, sideways-scroll on mobile)",
+      "hero": "wooden-framed chalk slate with chalk-lettered name + side 'Aujourd'hui' slate with live open/closed",
+      "palette_family": "slate/chalk/butcher red",
+      "display_font": "Cabin Sketch",
+      "body_font": "Public Sans + Kalam",
+      "signature": "butcher's dial scale: drag the needle to set grams, builds a list to read out on the phone",
+      "effects": [
+        "magicui highlighter",
+        "magicui blur-fade"
+      ],
+      "order_button": "Call to order (landline tel:) + list-to-dictate picker"
     }
   ]
 }
