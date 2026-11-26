@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>L'Épicerie Latine — Av. de France 69, Lausanne (maquette)</title>
+<meta name="description" content="Maquette non officielle : L'Épicerie Latine, produits d'Amérique latine à l'avenue de France 69, Lausanne.">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --green:#0F3D2E; --green2:#0a2b20; --gold:#F4A300; --red:#D7263D; --cream:#FFF3DC; --blue:#2251A3; --ink:#1A1410;
+  --kraft:#C99C6B; --muted:#5b4f45;
+  --disp:'Bungee',Impact,sans-serif; --body:'Figtree',system-ui,sans-serif; --hand:'Patrick Hand','Comic Sans MS',cursive;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.5 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+[data-en]{display:none} body.en [data-fr]{display:none} body.en [data-en]{display:revert}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,h3{font-family:var(--disp);font-weight:400;line-height:1.02;margin:0;letter-spacing:.01em}
+p{margin:0}
+
+/* ---------- banner ---------- */
+.banner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 20px;background:var(--ink);color:var(--cream);font-size:14px}
+.lang{flex:none;font:800 13px/1 var(--body);letter-spacing:.1em;background:var(--gold);color:var(--ink);border:0;border-radius:999px;padding:9px 13px;cursor:pointer}
+
+/* ---------- bus line nav ---------- */
+.bus{position:sticky;top:0;z-index:20;background:var(--green);color:var(--cream);display:flex;align-items:center;gap:10px;padding:8px 12px 8px 16px;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.bus .line-name{flex:none;font:400 12px/1 var(--disp);background:var(--gold);color:var(--ink);padding:6px 8px;border-radius:4px}
+.stops-wrap{position:relative;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+.stops-wrap::-webkit-scrollbar{display:none}
+.stops{position:relative;display:flex;gap:0;list-style:none;margin:0;padding:18px 0 0;min-width:max-content}
+.stops::before{content:"";position:absolute;left:10px;right:10px;top:9px;height:4px;border-radius:2px;background:rgba(255,243,220,.35)}
+.stops li{position:relative;flex:1}
+.stops a{position:relative;display:block;padding:6px 12px 2px;font:700 12.5px/1.1 var(--body);text-decoration:none;white-space:nowrap;text-align:center;opacity:.8}
+.stops a::before{content:"";position:absolute;left:50%;top:-14px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--green);border:3px solid var(--cream)}
+.stops a.cur{opacity:1;color:var(--gold)}
+.stops a.cur::before{background:var(--gold);border-color:var(--gold)}
+.bus-icon{position:absolute;top:-1px;left:0;width:34px;height:22px;transform:translateX(0);pointer-events:none;transition:transform .15s linear}
+.bag-count{flex:none;display:flex;align-items:center;gap:6px;background:var(--cream);color:var(--ink);text-decoration:none;border-radius:999px;padding:6px 12px 6px 8px;font:800 13px/1 var(--body)}
+.bag-count svg{width:20px;height:20px}
+.bag-count.bump{animation:bump .4s ease}
+@keyframes bump{40%{transform:scale(1.18)}}
+
+/* ---------- street / panes (mobile first: stacked) ---------- */
+.street{position:relative}
+.sticky{position:relative}
+.track{display:block}
+.pane{position:relative;padding:44px 20px 52px;border-bottom:6px solid var(--ink)}
+.pane-in{max-width:640px;margin:0 auto}
+.kicker{display:inline-block;font:400 18px/1.2 var(--hand);color:var(--red);margin-bottom:6px}
+.pane h2{font-size:clamp(30px,7vw,44px);margin-bottom:12px}
+.lead{font-size:17px;color:var(--muted);max-width:46ch}
+
+/* ---------- vitrine ---------- */
+.vitrine{padding:0 0 40px;background:linear-gradient(var(--cream) 0 82%,#d9cbb3 82%)}
+/* Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (marquee) */
+.fascia{background:var(--green);color:var(--gold);overflow:hidden;display:flex;gap:2rem;padding:10px 0;border-bottom:4px solid var(--ink);--duration:38s}
+.fascia .run{flex:none;display:flex;gap:2rem;animation:marquee var(--duration) linear infinite;font:400 15px/1 var(--disp);white-space:nowrap}
+.fascia .run span::after{content:"✦";margin-left:2rem;color:var(--cream)}
+@keyframes marquee{to{transform:translateX(calc(-100% - 2rem))}}
+.awning{position:relative;height:74px;background:repeating-linear-gradient(90deg,var(--red) 0 46px,var(--cream) 46px 92px);overflow:hidden}
+.awning svg{position:absolute;inset:0;width:100%;height:100%;color:rgba(26,20,16,.13)}
+.poster{display:none;align-self:center;background:var(--red);color:var(--cream);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:12px 12px;transform:rotate(-2deg);font:400 20px/1.05 var(--disp);text-align:center}
+.poster small{display:block;font:700 13px/1.25 var(--body);margin-top:6px}
+.scallop{display:block;width:100%;height:22px;margin-top:-1px}
+.facade{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:end;padding:18px 20px 0;background:var(--gold);border-bottom:10px solid var(--green)}
+.window{position:relative;background:linear-gradient(160deg,#164f5c,#0d2f38 70%);border:10px solid var(--green);border-bottom-width:14px;padding:24px 20px 26px;color:var(--cream);overflow:hidden}
+.window::before{content:"";position:absolute;top:-40%;left:-10%;width:40%;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transform:rotate(18deg);pointer-events:none}
+.window h1{position:relative;font-size:clamp(36px,10vw,82px);color:var(--gold);text-shadow:3px 3px 0 var(--red)}
+.window h1 small{display:block;font-size:.36em;color:var(--cream);text-shadow:none;letter-spacing:.06em;margin-bottom:6px}
+.window p{position:relative;margin-top:14px;font-size:16.5px;max-width:40ch}
+.door{position:relative;width:118px;height:210px;background:var(--green);border:6px solid var(--green2);border-bottom:0;display:flex;flex-direction:column;align-items:center;padding-top:14px}
+.door .glass{width:76px;height:96px;background:linear-gradient(160deg,#1e6372,#0d2f38);border:4px solid var(--green2)}
+.door .knob{position:absolute;right:12px;top:118px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.sign{position:absolute;top:44px;left:50%;transform:translateX(-50%) rotate(-4deg);background:var(--cream);color:var(--ink);border:2px solid var(--ink);padding:5px 7px;font:400 11px/1.1 var(--disp);text-align:center;white-space:nowrap;box-shadow:2px 2px 0 var(--ink)}
+.sign::before{content:"";position:absolute;left:50%;top:-16px;width:26px;height:14px;margin-left:-13px;border:2px solid var(--ink);border-bottom:0;border-radius:14px 14px 0 0}
+.sign.open b{color:#1d7a3e} .sign.closed b{color:var(--red)}
+.sign small{display:block;font:700 10px/1.2 var(--body);margin-top:3px}
+.number{position:absolute;top:-30px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font:400 13px/1 var(--disp);padding:5px 8px;border:2px solid #fff;border-radius:4px}
+.sidewalk{padding:18px 20px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 18px;border-radius:10px;border:2px solid var(--ink);font:800 15.5px/1.1 var(--body);text-decoration:none;cursor:pointer;background:var(--cream);box-shadow:3px 3px 0 var(--ink);transition:transform .12s ease,box-shadow .12s ease}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.wa{background:#1f9d55;color:#fff}
+.btn.red{background:var(--red);color:#fff}
+.addr{font-weight:700;font-size:15px;color:var(--ink)}
+
+/* ---------- shelves ---------- */
+.shelf-pane{background:var(--cream)}
+.shelf-pane:nth-of-type(odd){background:#fbe7c4}
+.shelf{position:relative;margin-top:22px;padding:0 6px}
+.shelf-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:end;padding:0 4px}
+.lip{position:relative;height:22px;margin:0 -6px;background:var(--green);border-radius:3px;overflow:hidden;box-shadow:0 8px 0 -2px rgba(26,20,16,.18)}
+/* Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (striped-pattern) */
+.lip svg{position:absolute;inset:0;width:100%;height:100%;color:rgba(244,163,0,.55)}
+.prod{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 2px 6px;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.prod svg.item{width:min(100%,104px);height:112px;transition:transform .2s ease;filter:drop-shadow(2px 3px 0 rgba(26,20,16,.2))}
+.prod:hover svg.item{transform:translateY(-6px) rotate(-2deg)}
+.prod .tag{position:relative;font:400 15px/1.15 var(--hand);background:#fff;border:1.5px solid var(--ink);padding:4px 8px 4px 14px;border-radius:3px 8px 8px 3px;text-align:left;max-width:100%}
+.prod .tag::before{content:"";position:absolute;left:4px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;border:1.5px solid var(--ink)}
+.prod .plus{position:absolute;top:2px;right:6px;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font:800 17px/26px var(--body);text-align:center;box-shadow:1px 1px 0 var(--ink)}
+.prod[aria-pressed="true"] .plus{background:#1d7a3e}
+.prod .qty{position:absolute;top:30px;right:4px;font:800 12px/1 var(--body);background:var(--ink);color:#fff;border-radius:999px;padding:3px 6px;display:none}
+.prod[aria-pressed="true"] .qty{display:block}
+.note{margin-top:18px;font-size:13.5px;color:var(--muted);max-width:52ch}
+
+/* ---------- bag ---------- */
+.bag-pane{background:var(--green);color:var(--cream)}
+.bag-pane .kicker{color:var(--gold)}
+.bag-pane .lead{color:rgba(255,243,220,.85)}
+.bag-wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:20px;align-items:start}
+.paperbag{position:relative;background:var(--kraft);color:var(--ink);padding:34px 20px 20px;border-radius:2px 2px 8px 8px;clip-path:polygon(0 14px,6% 0,12% 14px,18% 0,24% 14px,30% 0,36% 14px,42% 0,48% 14px,54% 0,60% 14px,66% 0,72% 14px,78% 0,84% 14px,90% 0,96% 14px,100% 0,100% 100%,0 100%);min-height:220px;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.035) 0 2px,transparent 2px 6px)}
+.paperbag h3{font:400 26px/1 var(--hand);margin-bottom:8px}
+.list{list-style:none;margin:0;padding:0;font:400 20px/1.3 var(--hand)}
+.list li{display:flex;align-items:center;gap:8px;border-bottom:1px dashed rgba(26,20,16,.35);padding:5px 0}
+.list li span{flex:1;min-width:0}
+.list button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--ink);background:var(--cream);font:800 16px/1 var(--body);cursor:pointer;flex:none}
+.empty{font:400 18px/1.35 var(--hand);color:#4a3a2b}
+.form{display:grid;gap:10px}
+.form label{font-size:14px;font-weight:700}
+.form input,.form select{width:100%;margin-top:4px;min-height:44px;padding:10px 12px;border-radius:8px;border:2px solid var(--ink);background:var(--cream);color:var(--ink);font:500 16px var(--body)}
+.paynote{font-size:13.5px;opacity:.85}
+
+/* ---------- tags (reviews) ---------- */
+.tags-pane{background:#fbe7c4}
+.tags{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 14px;margin-top:22px;align-items:start}
+.ptag{position:relative;background:#fff;border:2px solid var(--ink);border-radius:4px 14px 14px 4px;padding:14px 14px 14px 26px;box-shadow:3px 3px 0 var(--ink);transform:rotate(var(--r,0deg))}
+.ptag::before{content:"";position:absolute;left:9px;top:16px;width:8px;height:8px;border-radius:50%;border:2px solid var(--ink)}
+.ptag b{display:block;font:400 20px/1.1 var(--hand);color:var(--red)}
+.ptag p{font-size:14.5px;margin-top:4px;color:var(--muted)}
+.ptag:nth-child(2){--r:1.5deg}.ptag:nth-child(3){--r:-1deg}.ptag:nth-child(4){--r:2deg}.ptag:nth-child(5){--r:-2deg}
+.rating{margin-top:6px;font-weight:800}
+
+/* ---------- door / hours ---------- */
+.hours-pane{background:var(--cream)}
+.hours-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:20px;align-items:start}
+.plaque{background:var(--ink);color:var(--cream);border-radius:10px;padding:18px 18px 16px;border:4px solid var(--gold)}
+.plaque h3{font-size:18px;color:var(--gold);margin-bottom:10px}
+.plaque table{width:100%;border-collapse:collapse;font-size:15.5px}
+.plaque td{padding:6px 0;border-bottom:1px solid rgba(255,243,220,.18)}
+.plaque td+td{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.plaque tr.today td{color:var(--gold)}
+.access{display:grid;gap:10px;font-size:15.5px}
+.access .row{display:flex;gap:10px;align-items:flex-start}
+.access .row svg{width:22px;height:22px;flex:none;margin-top:1px}
+.stop-sign{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;border-radius:4px;padding:3px 8px;font:400 12px/1.2 var(--disp)}
+.mapbox{height:220px;border:2px solid var(--ink);border-radius:10px;overflow:hidden;background:#efe3cc}
+.confirm{font-size:13.5px;color:var(--muted)}
+
+/* ---------- footer ---------- */
+.back{background:var(--ink);color:var(--cream);padding:34px 20px 40px;font-size:14.5px}
+.back-in{max-width:960px;margin:0 auto;display:grid;gap:10px}
+.back b{font-family:var(--disp);font-weight:400;color:var(--gold);font-size:18px}
+.back p{opacity:.85}
+
+/* fly-to-bag clone */
+.fly{position:fixed;z-index:50;pointer-events:none;width:60px;height:64px}
+
+/* ---------- desktop: one long sideways shop window ---------- */
+@media (min-width:1024px) and (min-height:640px) and (prefers-reduced-motion:no-preference){
+  .bus{position:fixed;top:auto;bottom:0;left:0;right:0;padding:10px 22px;box-shadow:0 -2px 0 rgba(0,0,0,.15)}
+  .stops{min-width:0}
+  .stops a{font-size:13.5px}
+  html.pinned .street{height:var(--street-h,600vh)}
+  html.pinned .sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+  .track{display:flex;height:100vh;width:max-content;will-change:transform}
+  .pane{flex:none;height:100vh;padding:34px 44px 104px;border-bottom:0;border-right:6px solid var(--ink);overflow:hidden}
+  .pane-in{max-width:none;margin:0}
+  .vitrine{width:min(1180px,94vw);padding:0 0 calc(104px + var(--banner-h,0px));display:flex;flex-direction:column}
+  .vitrine .facade{flex:1;padding:30px 44px 0;gap:30px;align-items:end}
+  .vitrine .window{align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+  .shelf-pane .pane-in{height:100%;display:flex;flex-direction:column}
+  .shelf-pane .shelf{margin-top:auto}
+  .shelf-pane .note{margin-bottom:auto}
+  .prod svg.item{width:100%;height:min(26vh,230px)}
+  .vitrine .sidewalk{padding:20px 44px 0}
+  .window{padding:30px 34px 34px}
+  .window h1{font-size:clamp(56px,6.2vw,92px)}
+  .door{width:150px;height:min(330px,42vh)}
+  .door .glass{width:96px;height:46%}
+  .door .knob{top:58%}
+  .shelf-pane{width:600px}
+  .bag-pane{width:860px}
+  .bag-wrap{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:26px}
+  .paperbag{min-height:min(46vh,420px)}
+  .tags-pane{width:720px}
+  .hours-pane{width:960px}
+  .hours-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px}
+  .mapbox{height:200px}
+  .back{padding-bottom:110px}
+  .lip{margin:0 -12px}
+}
+@media (min-width:1024px) and (min-height:640px) and (prefers-reduced-motion:no-preference) and (max-height:820px){
+  .pane h2{font-size:38px}
+  .prod svg.item{height:min(24vh,170px)}
+  .shelf{margin-top:14px}
+}
+@media (min-width:700px) and (max-width:1023.98px){
+  .shelf-row{gap:18px}
+  .bag-wrap,.hours-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .tags{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .door{width:140px;height:250px}
+}
+@media (max-width:599px){
+  .facade{grid-template-columns:minmax(0,1fr) 104px;gap:12px 14px;padding:16px 14px 0}
+  .window{grid-column:1/-1;padding:20px 16px 22px;border-width:8px}
+  .window h1{font-size:min(9.2vw,46px)}
+  .poster{display:block}
+  .door{width:104px;height:178px;margin-top:22px}
+  .door .glass{width:62px;height:76px}
+  .door .knob{top:100px;right:9px}
+  .sign{font-size:10px;padding:4px 6px}
+}
+@media (max-width:420px){
+  .tags{grid-template-columns:minmax(0,1fr)}
+  .prod .tag{font-size:14px;padding:3px 6px 3px 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .fascia .run{animation:none}
+  .prod svg.item,.bus-icon{transition:none}
+  .fascia{flex-wrap:wrap;justify-content:center}
+  .fascia .run{flex:1 1 auto;flex-wrap:wrap;justify-content:center;row-gap:.6rem;white-space:normal;padding:0 16px}
+  .fascia .run[aria-hidden]{display:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (striped-pattern) -->
+    <pattern id="stripes" width="10" height="10" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="10" x2="10" y2="0" stroke="currentColor" stroke-width="2"/>
+      <line x1="-10" y1="10" x2="0" y2="0" stroke="currentColor" stroke-width="2"/>
+      <line x1="10" y1="10" x2="20" y2="0" stroke="currentColor" stroke-width="2"/>
+    </pattern>
+    <!-- product illustrations: colours come from --c1 / --c2 / --c3 on each button -->
+    <symbol id="sack" viewBox="0 0 100 120"><path d="M18 22 L82 22 L88 112 Q50 120 12 112 Z" fill="var(--c1)" stroke="#1A1410" stroke-width="3"/><path d="M18 22 L28 8 L40 20 L50 6 L60 20 L72 8 L82 22" fill="var(--c1)" stroke="#1A1410" stroke-width="3" stroke-linejoin="round"/><rect x="24" y="50" width="52" height="34" rx="4" fill="var(--c2)" stroke="#1A1410" stroke-width="2.5"/><path d="M34 67 h32" stroke="var(--c3)" stroke-width="6" stroke-linecap="round"/></symbol>
+    <symbol id="stack" viewBox="0 0 100 120"><g stroke="#1A1410" stroke-width="3" fill="var(--c1)"><ellipse cx="50" cy="104" rx="40" ry="10"/><ellipse cx="50" cy="94" rx="40" ry="10"/><ellipse cx="50" cy="84" rx="40" ry="10"/><ellipse cx="50" cy="74" rx="40" ry="10"/></g><path d="M14 44 h72 v40 h-72 z" fill="var(--c2)" opacity=".9" stroke="#1A1410" stroke-width="3"/><path d="M26 64 h48" stroke="var(--c3)" stroke-width="6" stroke-linecap="round"/></symbol>
+    <symbol id="jar" viewBox="0 0 100 120"><rect x="28" y="10" width="44" height="16" rx="3" fill="var(--c3)" stroke="#1A1410" stroke-width="3"/><path d="M24 30 Q24 24 30 24 H70 Q76 24 76 30 V106 Q76 114 68 114 H32 Q24 114 24 106 Z" fill="var(--c1)" stroke="#1A1410" stroke-width="3"/><rect x="30" y="54" width="40" height="30" rx="3" fill="var(--c2)" stroke="#1A1410" stroke-width="2.5"/><circle cx="50" cy="69" r="7" fill="var(--c3)"/></symbol>
+    <symbol id="bottle" viewBox="0 0 100 120"><path d="M42 6 H58 V30 Q72 40 72 58 V108 Q72 116 64 116 H36 Q28 116 28 108 V58 Q28 40 42 30 Z" fill="var(--c1)" stroke="#1A1410" stroke-width="3"/><rect x="40" y="2" width="20" height="10" rx="2" fill="var(--c3)" stroke="#1A1410" stroke-width="3"/><rect x="28" y="66" width="44" height="28" fill="var(--c2)" stroke="#1A1410" stroke-width="2.5"/><path d="M36 80 h28" stroke="var(--c3)" stroke-width="5" stroke-linecap="round"/></symbol>
+    <symbol id="packet" viewBox="0 0 100 120"><path d="M20 18 H80 L76 110 H24 Z" fill="var(--c1)" stroke="#1A1410" stroke-width="3"/><path d="M20 18 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8 l6 -8 l6 8" fill="none" stroke="#1A1410" stroke-width="3" stroke-linejoin="round"/><ellipse cx="50" cy="64" rx="22" ry="18" fill="var(--c2)" stroke="#1A1410" stroke-width="2.5"/><path d="M38 64 h24" stroke="var(--c3)" stroke-width="5" stroke-linecap="round"/></symbol>
+    <symbol id="ristra" viewBox="0 0 100 120"><path d="M50 4 V30" stroke="#1A1410" stroke-width="3"/><g stroke="#1A1410" stroke-width="2.5" fill="var(--c1)"><path d="M50 28 q-26 6 -30 34 q10 -18 30 -20z"/><path d="M50 28 q26 6 30 34 q-10 -18 -30 -20z"/><path d="M50 46 q-22 8 -22 40 q8 -22 22 -26z"/><path d="M50 46 q22 8 22 40 q-8 -22 -22 -26z"/><path d="M50 62 q-12 14 -6 50 q4 -26 6 -34z"/><path d="M50 62 q12 14 6 50 q-4 -26 -6 -34z"/></g><circle cx="50" cy="30" r="6" fill="var(--c2)" stroke="#1A1410" stroke-width="2.5"/></symbol>
+    <symbol id="tall" viewBox="0 0 100 120"><path d="M28 14 H72 V112 H28 Z" fill="var(--c1)" stroke="#1A1410" stroke-width="3"/><path d="M28 14 L36 4 H64 L72 14" fill="var(--c3)" stroke="#1A1410" stroke-width="3" stroke-linejoin="round"/><path d="M28 46 H72 V82 H28 Z" fill="var(--c2)" stroke="#1A1410" stroke-width="2.5"/><path d="M40 58 q10 14 20 0" fill="none" stroke="var(--c3)" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="candy" viewBox="0 0 100 120"><g stroke="#1A1410" stroke-width="3"><path d="M14 60 L30 46 L30 74 Z" fill="var(--c2)"/><path d="M86 60 L70 46 L70 74 Z" fill="var(--c2)"/><ellipse cx="50" cy="60" rx="22" ry="17" fill="var(--c1)"/></g><path d="M40 52 q10 16 20 0" fill="none" stroke="var(--c3)" stroke-width="4"/><g stroke="#1A1410" stroke-width="3"><path d="M20 98 L32 88 L32 108 Z" fill="var(--c1)"/><path d="M80 98 L68 88 L68 108 Z" fill="var(--c1)"/><ellipse cx="50" cy="98" rx="20" ry="13" fill="var(--c3)"/></g></symbol>
+    <symbol id="empanada" viewBox="0 0 100 120"><path d="M10 96 Q50 22 90 96 Z" fill="var(--c1)" stroke="#1A1410" stroke-width="3" stroke-linejoin="round"/><path d="M14 92 q6 -6 10 2 q6 -8 10 2 q6 -8 10 2 q6 -8 10 2 q6 -8 10 2 q6 -8 10 2 q6 -8 8 0" fill="none" stroke="#1A1410" stroke-width="2.5"/><path d="M8 104 H92" stroke="var(--c2)" stroke-width="8" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="banner">
+  <p><span data-fr>Maquette proposée par Felix Hancock — site non officiel</span><span data-en>Proposed mock-up by Felix Hancock — not the official site</span></p>
+  <button class="lang" type="button" id="lang" aria-pressed="false" aria-label="Switch to English / Passer en français"><span data-fr>EN</span><span data-en>FR</span></button>
+</div>
+
+<nav class="bus" aria-label="Rayons / Aisles">
+  <span class="line-name" aria-hidden="true">Av. de France</span>
+  <div class="stops-wrap" id="stopsWrap">
+    <ol class="stops" id="stops">
+      <li><a href="#vitrine"><span data-fr>Vitrine</span><span data-en>Window</span></a></li>
+      <li><a href="#harinas">Harinas</a></li>
+      <li><a href="#salsas">Salsas</a></li>
+      <li><a href="#bebidas">Bebidas</a></li>
+      <li><a href="#dulces">Dulces</a></li>
+      <li><a href="#bolsa"><span data-fr>Ta liste</span><span data-en>Your list</span></a></li>
+      <li><a href="#avis"><span data-fr>Avis</span><span data-en>Reviews</span></a></li>
+      <li><a href="#horaires"><span data-fr>Horaires</span><span data-en>Hours</span></a></li>
+    </ol>
+    <svg class="bus-icon" id="busIcon" viewBox="0 0 34 22" aria-hidden="true"><rect x="1" y="2" width="31" height="15" rx="4" fill="#F4A300" stroke="#1A1410" stroke-width="2"/><rect x="5" y="5" width="6" height="5" fill="#cfe7ef"/><rect x="13" y="5" width="6" height="5" fill="#cfe7ef"/><rect x="21" y="5" width="7" height="5" fill="#cfe7ef"/><circle cx="9" cy="18" r="3" fill="#1A1410"/><circle cx="25" cy="18" r="3" fill="#1A1410"/></svg>
+  </div>
+  <a class="bag-count" id="bagCount" href="#bolsa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 13H6z" fill="#C99C6B" stroke="#1A1410" stroke-width="1.6"/><path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="#1A1410" stroke-width="1.6"/></svg><span data-fr>Liste</span><span data-en>List</span>&nbsp;<span id="bagNum">0</span></a>
+</nav>
+
+<section class="street" id="street" aria-label="L'Épicerie Latine">
+ <div class="sticky" id="sticky">
+  <div class="track" id="track">
+
+    <!-- 1. VITRINE -->
+    <article class="pane vitrine" id="vitrine" aria-labelledby="t-vitrine">
+      <div class="fascia">
+        <div class="run"><span>Harina P.A.N.</span><span>Yerba mate</span><span>Chimichurri</span><span>Tortillas de maíz</span><span>Frijoles</span><span>Chiles secos</span><span>Postobón</span><span>Dulces típicos</span><span>Colombia · México · España</span></div>
+        <div class="run" aria-hidden="true"><span>Harina P.A.N.</span><span>Yerba mate</span><span>Chimichurri</span><span>Tortillas de maíz</span><span>Frijoles</span><span>Chiles secos</span><span>Postobón</span><span>Dulces típicos</span><span>Colombia · México · España</span></div>
+      </div>
+      <div class="awning" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#stripes)"/></svg></div>
+      <svg class="scallop" aria-hidden="true"><defs><pattern id="sc" width="92" height="22" patternUnits="userSpaceOnUse"><path d="M0 0 H46 V1 Q34 22 23 22 Q12 22 0 1 Z" fill="#D7263D" stroke="#1A1410" stroke-width="1.5"/><path d="M46 0 H92 V1 Q80 22 69 22 Q58 22 46 1 Z" fill="#FFF3DC" stroke="#1A1410" stroke-width="1.5"/></pattern></defs><rect width="100%" height="22" fill="#F4A300"/><rect width="100%" height="22" fill="url(#sc)"/></svg>
+      <div class="facade">
+        <div class="window">
+          <h1 id="t-vitrine"><small><span data-fr>Produits d'Amérique latine</span><span data-en>Latin American groceries</span></small>L'Épicerie Latine</h1>
+          <p><span data-fr>Harina P.A.N. pour vos arepas, piments séchés, tortillas, yerba mate, sodas colombiens… La petite <i>tienda</i> de l'avenue de France où l'on retrouve les goûts de chez soi.</span><span data-en>Harina P.A.N. for your arepas, dried chillies, tortillas, yerba mate, Colombian sodas… The little <i>tienda</i> on Avenue de France where you find the flavours of home.</span></p>
+        </div>
+        <p class="poster"><span data-fr>Ouvert 7j/7</span><span data-en>Open 7 days</span><small><span data-fr>dimanche aussi, 9h–15h</span><span data-en>Sundays too, 9–3</span></small></p>
+        <div class="door" aria-hidden="true">
+          <span class="number">69</span>
+          <div class="glass"></div>
+          <span class="knob"></span>
+          <div class="sign" id="sign"><b data-fr>Abierto</b><b data-en>Open</b><small><span data-fr>Lun–Sam 9h–20h</span><span data-en>Mon–Sat 9–8</span></small></div>
+        </div>
+      </div>
+      <div class="sidewalk">
+        <a class="btn wa" href="https://wa.me/41782414043?text=Bonjour%2C%20je%20voudrais%20r%C3%A9server%20quelques%20produits%20(vu%20sur%20votre%20site)." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.3-.2z"/></svg><span data-fr>Réserver sur WhatsApp</span><span data-en>Reserve on WhatsApp</span></a>
+        <a class="btn" href="tel:+41782414043"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>078&nbsp;241&nbsp;40&nbsp;43</a>
+        <span class="addr">Av. de France 69 · 1004 Lausanne · <span data-fr>bus : arrêt Dranse</span><span data-en>bus: Dranse stop</span></span>
+      </div>
+    </article>
+
+    <!-- 2. SHELF: HARINAS -->
+    <article class="pane shelf-pane" id="harinas" aria-labelledby="t-har">
+      <div class="pane-in">
+        <span class="kicker"><span data-fr>Rayon 1 · touchez pour ajouter à votre liste</span><span data-en>Aisle 1 · tap to add to your list</span></span>
+        <h2 id="t-har">Harinas <span style="color:var(--red)">&amp;</span> maíz</h2>
+        <p class="lead"><span data-fr>De quoi faire des arepas, des tacos ou un bon plat de frijoles à la maison.</span><span data-en>Everything for arepas, tacos or a proper pot of frijoles at home.</span></p>
+        <div class="shelf">
+          <div class="shelf-row">
+            <button class="prod" type="button" data-id="pan" data-name="Harina P.A.N. (farine pour arepas)" data-name-en="Harina P.A.N. (arepa flour)" style="--c1:#fff8ea;--c2:#F4A300;--c3:#D7263D" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#sack"/></svg><span class="tag">Harina P.A.N.<span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+            <button class="prod" type="button" data-id="tortillas" data-name="Tortillas de maïs" data-name-en="Corn tortillas" style="--c1:#f2d48a;--c2:#2251A3;--c3:#F4A300" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#stack"/></svg><span class="tag"><span data-fr>Tortillas de maïs</span><span data-en>Corn tortillas</span><span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+            <button class="prod" type="button" data-id="frijoles" data-name="Haricots / frijoles" data-name-en="Beans / frijoles" style="--c1:#7a3b2a;--c2:#FFF3DC;--c3:#0F3D2E" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#sack"/></svg><span class="tag">Frijoles<span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+          </div>
+          <div class="lip" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#stripes)"/></svg></div>
+        </div>
+        <p class="note"><span data-fr>Produits cités sur les fiches publiques de la boutique ou dans les avis clients. L'assortiment exact est à confirmer en magasin.</span><span data-en>Products mentioned in the shop's public listings or in customer reviews. Exact range to be confirmed in store.</span></p>
+      </div>
+    </article>
+
+    <!-- 3. SHELF: SALSAS -->
+    <article class="pane shelf-pane" id="salsas" aria-labelledby="t-sal">
+      <div class="pane-in">
+        <span class="kicker"><span data-fr>Rayon 2 · ça pique (un peu)</span><span data-en>Aisle 2 · a little heat</span></span>
+        <h2 id="t-sal">Salsas <span style="color:var(--red)">&amp;</span> chiles</h2>
+        <p class="lead"><span data-fr>Piments séchés, sauces et chimichurri pour relever la cuisine du quotidien.</span><span data-en>Dried chillies, sauces and chimichurri to liven up everyday cooking.</span></p>
+        <div class="shelf">
+          <div class="shelf-row">
+            <button class="prod" type="button" data-id="chiles" data-name="Piments séchés" data-name-en="Dried chillies" style="--c1:#D7263D;--c2:#0F3D2E;--c3:#F4A300" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#ristra"/></svg><span class="tag"><span data-fr>Piments séchés</span><span data-en>Dried chillies</span><span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+            <button class="prod" type="button" data-id="salsa" data-name="Salsa" data-name-en="Salsa" style="--c1:#b8321f;--c2:#FFF3DC;--c3:#0F3D2E" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#jar"/></svg><span class="tag">Salsas<span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+            <button class="prod" type="button" data-id="chimichurri" data-name="Chimichurri" data-name-en="Chimichurri" style="--c1:#3f7a35;--c2:#FFF3DC;--c3:#D7263D" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#jar"/></svg><span class="tag">Chimichurri<span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+          </div>
+          <div class="lip" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#stripes)"/></svg></div>
+        </div>
+        <p class="note"><span data-fr>Marques et piquants exacts&nbsp;: à confirmer avec la boutique.</span><span data-en>Exact brands and heat levels: to be confirmed with the shop.</span></p>
+      </div>
+    </article>
+
+    <!-- 4. SHELF: BEBIDAS -->
+    <article class="pane shelf-pane" id="bebidas" aria-labelledby="t-beb">
+      <div class="pane-in">
+        <span class="kicker"><span data-fr>Rayon 3 · à boire</span><span data-en>Aisle 3 · to drink</span></span>
+        <h2 id="t-beb">Bebidas <span style="color:var(--red)">&amp;</span> mate</h2>
+        <p class="lead"><span data-fr>Les sodas colombiens qui manquent tant, et la yerba pour le maté.</span><span data-en>The Colombian sodas you miss, and yerba for your mate.</span></p>
+        <div class="shelf">
+          <div class="shelf-row">
+            <button class="prod" type="button" data-id="postobon" data-name="Sodas colombiens (Postobón)" data-name-en="Colombian sodas (Postobón)" style="--c1:#e9871c;--c2:#2251A3;--c3:#FFF3DC" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#bottle"/></svg><span class="tag">Postobón<span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+            <button class="prod" type="button" data-id="mate" data-name="Yerba mate" data-name-en="Yerba mate" style="--c1:#0F3D2E;--c2:#F4A300;--c3:#FFF3DC" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#tall"/></svg><span class="tag">Yerba mate<span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+            <button class="prod" type="button" data-id="soda2" data-name="Autres boissons latines" data-name-en="Other Latin drinks" style="--c1:#7d2b8f;--c2:#F4A300;--c3:#FFF3DC" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#bottle"/></svg><span class="tag"><span data-fr>Autres boissons</span><span data-en>Other drinks</span><span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+          </div>
+          <div class="lip" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#stripes)"/></svg></div>
+        </div>
+        <p class="note"><span data-fr>Choix de boissons du moment&nbsp;: à confirmer en magasin.</span><span data-en>Current drinks selection: to be confirmed in store.</span></p>
+      </div>
+    </article>
+
+    <!-- 5. SHELF: DULCES -->
+    <article class="pane shelf-pane" id="dulces" aria-labelledby="t-dul">
+      <div class="pane-in">
+        <span class="kicker"><span data-fr>Rayon 4 · pour le plaisir</span><span data-en>Aisle 4 · treats</span></span>
+        <h2 id="t-dul">Dulces <span style="color:var(--red)">&amp;</span> snacks</h2>
+        <p class="lead"><span data-fr>Douceurs traditionnelles, chips latinas — et des empanadas, dont parle un client.</span><span data-en>Traditional sweets, Latin crisps — and empanadas, mentioned by one customer.</span></p>
+        <div class="shelf">
+          <div class="shelf-row">
+            <button class="prod" type="button" data-id="dulces" data-name="Douceurs traditionnelles" data-name-en="Traditional sweets" style="--c1:#D7263D;--c2:#F4A300;--c3:#FFF3DC" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#candy"/></svg><span class="tag"><span data-fr>Douceurs</span><span data-en>Sweets</span><span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+            <button class="prod" type="button" data-id="chips" data-name="Chips latinas" data-name-en="Latin crisps" style="--c1:#F4A300;--c2:#D7263D;--c3:#FFF3DC" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#packet"/></svg><span class="tag">Chips<span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+            <button class="prod" type="button" data-id="empanadas" data-name="Empanadas (si disponibles)" data-name-en="Empanadas (if available)" style="--c1:#e2a54e;--c2:#0F3D2E;--c3:#FFF3DC" aria-pressed="false"><span class="plus" aria-hidden="true">+</span><span class="qty"></span><svg class="item" aria-hidden="true"><use href="#empanada"/></svg><span class="tag">Empanadas*<span class="sr"><span data-fr> — ajouter à ma liste</span><span data-en> — add to my list</span></span></span></button>
+          </div>
+          <div class="lip" aria-hidden="true"><svg><rect width="100%" height="100%" fill="url(#stripes)"/></svg></div>
+        </div>
+        <p class="note"><span data-fr>* Empanadas&nbsp;: à confirmer avec la boutique (jours et disponibilité).</span><span data-en>* Empanadas: to be confirmed with the shop (days and availability).</span></p>
+      </div>
+    </article>
+
+    <!-- 6. LA BOLSA -->
+    <article class="pane bag-pane" id="bolsa" aria-labelledby="t-bag">
+      <div class="pane-in">
+        <span class="kicker"><span data-fr>La bolsa · réservez, payez sur place</span><span data-en>La bolsa · reserve, pay in store</span></span>
+        <h2 id="t-bag"><span data-fr>Ta liste de courses</span><span data-en>Your shopping list</span></h2>
+        <p class="lead"><span data-fr>Remplissez le sac, choisissez quand passer&nbsp;: votre liste part sur WhatsApp et la boutique vous confirme ce qui est en rayon.</span><span data-en>Fill the bag, pick when to come by: your list goes out on WhatsApp and the shop confirms what's in stock.</span></p>
+        <div class="bag-wrap">
+          <div class="paperbag" aria-live="polite">
+            <h3><span data-fr>Ma liste</span><span data-en>My list</span></h3>
+            <ul class="list" id="list"></ul>
+            <p class="empty" id="empty"><span data-fr>Le sac est vide. Touchez les produits dans les rayons pour les ajouter.</span><span data-en>The bag is empty. Tap products on the shelves to add them.</span></p>
+          </div>
+          <div class="form">
+            <label><span data-fr>Autre chose&nbsp;? (facultatif)</span><span data-en>Anything else? (optional)</span>
+              <input id="extra" type="text" maxlength="120" autocomplete="off" placeholder="ex. arequipe, bocadillo…">
+            </label>
+            <label><span data-fr>Je passe</span><span data-en>I'll come by</span>
+              <select id="when">
+                <option value="aujourd'hui">Aujourd'hui / Today</option>
+                <option value="demain" selected>Demain / Tomorrow</option>
+                <option value="ce week-end">Ce week-end / This weekend</option>
+                <option value="dès que possible">Dès que possible / Asap</option>
+              </select>
+            </label>
+            <label><span data-fr>Votre prénom (facultatif)</span><span data-en>Your first name (optional)</span>
+              <input id="who" type="text" maxlength="40" autocomplete="given-name">
+            </label>
+            <a class="btn wa" id="waBtn" href="https://wa.me/41782414043?text=Bonjour%2C%20je%20voudrais%20r%C3%A9server%20quelques%20produits%20(vu%20sur%20votre%20site)." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg><span data-fr>Commander / réserver sur WhatsApp</span><span data-en>Order / reserve on WhatsApp</span></a>
+            <p class="paynote"><span data-fr>Paiement sur place · aucun paiement en ligne · pas de prix affichés ici.</span><span data-en>Pay in store · no online payment · no prices shown here.</span></p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. AVIS -->
+    <article class="pane tags-pane" id="avis" aria-labelledby="t-avis">
+      <div class="pane-in">
+        <span class="kicker"><span data-fr>Étiquettes écrites d'après les avis Google</span><span data-en>Tags written from Google reviews</span></span>
+        <h2 id="t-avis"><span data-fr>Ce qu'on en dit</span><span data-en>What people say</span></h2>
+        <p class="rating"><span data-fr>4,7/5 sur Google · 62&nbsp;avis (novembre 2026)</span><span data-en>4.7/5 on Google · 62 reviews (November 2026)</span></p>
+        <div class="tags">
+          <div class="ptag"><b><span data-fr>Comme à la maison</span><span data-en>Like home</span></b><p><span data-fr>Un accueil chaleureux revient dans presque tous les avis, d'après les avis Google.</span><span data-en>A warm welcome comes up in almost every review.</span></p></div>
+          <div class="ptag"><b><span data-fr>On y trouve de tout</span><span data-en>They have it all</span></b><p><span data-fr>Beaucoup s'étonnent du choix dans une boutique aussi petite.</span><span data-en>Many are surprised by the choice in such a small shop.</span></p></div>
+          <div class="ptag"><b><span data-fr>Les goûts de chez soi</span><span data-en>Tastes of home</span></b><p><span data-fr>Des clients colombiens et latinos y retrouvent leurs produits préférés.</span><span data-en>Colombian and Latin customers find their favourite products.</span></p></div>
+          <div class="ptag"><b><span data-fr>Conseils &amp; sourire</span><span data-en>Advice &amp; smiles</span></b><p><span data-fr>Des propriétaires décrits comme attentifs et de bon conseil.</span><span data-en>Owners described as attentive and helpful.</span></p></div>
+          <div class="ptag"><b><span data-fr>Des prix justes</span><span data-en>Fair prices</span></b><p><span data-fr>Plusieurs avis parlent de prix abordables.</span><span data-en>Several reviews mention affordable prices.</span></p></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8. HORAIRES -->
+    <article class="pane hours-pane" id="horaires" aria-labelledby="t-hours">
+      <div class="pane-in">
+        <span class="kicker"><span data-fr>Dernier arrêt · Dranse</span><span data-en>Last stop · Dranse</span></span>
+        <h2 id="t-hours"><span data-fr>Horaires &amp; accès</span><span data-en>Hours &amp; directions</span></h2>
+        <div class="hours-grid">
+          <div class="plaque">
+            <h3><span data-fr>Ouvert 7 jours sur 7</span><span data-en>Open 7 days a week</span></h3>
+            <table id="hoursTable">
+              <tr data-d="1"><td><span data-fr>Lundi</span><span data-en>Monday</span></td><td>9:00–20:00</td></tr>
+              <tr data-d="2"><td><span data-fr>Mardi</span><span data-en>Tuesday</span></td><td>9:00–20:00</td></tr>
+              <tr data-d="3"><td><span data-fr>Mercredi</span><span data-en>Wednesday</span></td><td>9:00–20:00</td></tr>
+              <tr data-d="4"><td><span data-fr>Jeudi</span><span data-en>Thursday</span></td><td>9:00–20:00</td></tr>
+              <tr data-d="5"><td><span data-fr>Vendredi</span><span data-en>Friday</span></td><td>9:00–20:00</td></tr>
+              <tr data-d="6"><td><span data-fr>Samedi</span><span data-en>Saturday</span></td><td>9:00–20:00</td></tr>
+              <tr data-d="0"><td><span data-fr>Dimanche</span><span data-en>Sunday</span></td><td>9:00–15:00</td></tr>
+            </table>
+            <p class="confirm" style="color:rgba(255,243,220,.7);margin-top:8px"><span data-fr>Jours fériés&nbsp;: à confirmer.</span><span data-en>Public holidays: to be confirmed.</span></p>
+          </div>
+          <div class="access">
+            <div class="row"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#D7263D" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg><div><b>Avenue de France 69, 1004 Lausanne</b><br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Avenue%20de%20France%2069%2C%201004%20Lausanne" target="_blank" rel="noopener"><span data-fr>Itinéraire</span><span data-en>Directions</span></a></div></div>
+            <div class="row"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="15" rx="3" fill="#2251A3"/><rect x="6" y="6" width="12" height="5" fill="#cfe7ef"/><circle cx="8" cy="20" r="2" fill="#1A1410"/><circle cx="16" cy="20" r="2" fill="#1A1410"/></svg><div><span class="stop-sign">Dranse</span> <span data-fr>arrêt de bus juste à côté.</span><span data-en>bus stop right nearby.</span></div></div>
+            <div class="row"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A1410" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><div><a href="tel:+41782414043"><b>078&nbsp;241&nbsp;40&nbsp;43</b></a> · <span data-fr>appel ou WhatsApp</span><span data-en>call or WhatsApp</span></div></div>
+            <div class="mapbox">
+              <button type="button" class="map-consent" data-src="https://maps.google.com/maps?q=Avenue%20de%20France%2069%2C%201004%20Lausanne&amp;output=embed" data-title="Carte : Avenue de France 69, Lausanne"><b><span data-fr>Afficher la carte</span><span data-en>Show the map</span></b><small><span data-fr>La carte est chargée depuis Google Maps seulement si vous cliquez.</span><span data-en>The map loads from Google Maps only when you click.</span></small></button>
+            </div>
+            <p class="confirm"><span data-fr>Envois ailleurs en Suisse&nbsp;: mentionnés par un client, à confirmer avec la boutique.</span><span data-en>Shipping elsewhere in Switzerland: mentioned by one customer, to be confirmed with the shop.</span></p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+ </div>
+</section>
+
+<footer class="back">
+  <div class="back-in">
+    <b>L'Épicerie Latine</b>
+    <p>Avenue de France 69 · 1004 Lausanne · 078&nbsp;241&nbsp;40&nbsp;43 · Instagram&nbsp;: @lepicerielatine69</p>
+    <p><span data-fr>Maquette proposée par Felix Hancock — site non officiel. Illustrations dessinées pour la maquette, aucune photo de la boutique. Informations issues des fiches publiques (Google, Instagram, local.ch) au 26.11.2026.</span><span data-en>Proposed mock-up by Felix Hancock — not the official site. Illustrations drawn for this mock-up, no photos of the shop. Information from public listings (Google, Instagram, local.ch) as of 26 Nov 2026.</span></p>
+  </div>
+</footer>
+
+<style>.map-consent{width:100%;height:100%;min-height:200px;border:0;display:grid;place-items:center;gap:8px;padding:20px;background:repeating-linear-gradient(135deg,rgba(0,0,0,.04) 0 12px,transparent 12px 24px);color:inherit;font:inherit;cursor:pointer;text-align:center}.map-consent b{font-size:17px}.map-consent small{opacity:.7;max-width:34ch}</style>
+<script>document.querySelectorAll('.map-consent').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=b.dataset.src;f.title=b.dataset.title||'Carte';f.loading='lazy';f.style.cssText='width:100%;height:100%;min-height:200px;border:0;display:block';f.referrerPolicy='no-referrer-when-downgrade';b.replaceWith(f)})});</script>
+
+<script>
+(function(){
+  var html=document.documentElement, body=document.body;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* language */
+  var lb=document.getElementById('lang');
+  lb.addEventListener('click',function(){var en=body.classList.toggle('en');lb.setAttribute('aria-pressed',en);html.lang=en?'en':'fr';renderList()});
+
+  /* live open/closed sign + today's row (Europe/Zurich) */
+  try{
+    var parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Zurich',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var get=function(t){for(var i=0;i<parts.length;i++)if(parts[i].type===t)return parts[i].value};
+    var day=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(get('weekday'));
+    var mins=parseInt(get('hour'),10)%24*60+parseInt(get('minute'),10);
+    var close=day===0?15*60:20*60, open=mins>=9*60&&mins<close;
+    var sign=document.getElementById('sign');
+    sign.className='sign '+(open?'open':'closed');
+    sign.innerHTML=open
+      ?'<b data-fr>Abierto · ouvert</b><b data-en>Abierto · open</b><small><span data-fr>jusqu’à '+(day===0?'15h':'20h')+'</span><span data-en>until '+(day===0?'3 pm':'8 pm')+'</span></small>'
+      :'<b data-fr>Cerrado · fermé</b><b data-en>Cerrado · closed</b><small><span data-fr>dès 9h</span><span data-en>from 9 am</span></small>';
+    var row=document.querySelector('#hoursTable tr[data-d="'+day+'"]'); if(row)row.className='today';
+  }catch(e){}
+
+  /* shopping bag -> WhatsApp text (no prices, no payment) */
+  var bag={}, order=[];
+  var listEl=document.getElementById('list'), emptyEl=document.getElementById('empty'), numEl=document.getElementById('bagNum'), countEl=document.getElementById('bagCount');
+  var waBtn=document.getElementById('waBtn'), extra=document.getElementById('extra'), when=document.getElementById('when'), who=document.getElementById('who');
+  var prods={}; document.querySelectorAll('.prod').forEach(function(b){prods[b.dataset.id]=b});
+  function total(){var n=0;for(var k in bag)n+=bag[k];return n}
+  function msg(){
+    var items=order.filter(function(k){return bag[k]>0}).map(function(k){return bag[k]+' × '+prods[k].dataset.name});
+    var t='Bonjour, je voudrais réserver';
+    t+= items.length? ' : '+items.join(', ')+'.' : ' quelques produits.';
+    if(extra.value.trim()) t+=' Aussi : '+extra.value.trim()+'.';
+    t+=' Je passe '+when.value+'.';
+    if(who.value.trim()) t+=' '+who.value.trim()+'.';
+    t+=' (vu sur votre site)';
+    return t;
+  }
+  function renderList(){
+    listEl.innerHTML='';
+    var en=body.classList.contains('en');
+    order.forEach(function(k){
+      if(!bag[k])return;
+      var b=prods[k], li=document.createElement('li'), s=document.createElement('span');
+      s.textContent=bag[k]+' × '+(en?b.dataset.nameEn:b.dataset.name);
+      var minus=document.createElement('button'); minus.type='button'; minus.textContent='−'; minus.setAttribute('aria-label',(en?'Remove one ':'Retirer un ')+(en?b.dataset.nameEn:b.dataset.name));
+      var plus=document.createElement('button'); plus.type='button'; plus.textContent='+'; plus.setAttribute('aria-label',(en?'Add one ':'Ajouter un ')+(en?b.dataset.nameEn:b.dataset.name));
+      minus.addEventListener('click',function(){set(k,bag[k]-1)}); plus.addEventListener('click',function(){set(k,bag[k]+1)});
+      li.appendChild(s); li.appendChild(minus); li.appendChild(plus); listEl.appendChild(li);
+    });
+    var n=total(); emptyEl.style.display=n?'none':''; numEl.textContent=n;
+    waBtn.href='https://wa.me/41782414043?text='+encodeURIComponent(msg());
+  }
+  function set(k,v){
+    v=Math.max(0,Math.min(20,v)); bag[k]=v; if(order.indexOf(k)<0)order.push(k);
+    var b=prods[k]; b.setAttribute('aria-pressed',v>0); b.querySelector('.qty').textContent=v?'×'+v:'';
+    renderList();
+  }
+  [extra,when,who].forEach(function(el){el.addEventListener('input',renderList);el.addEventListener('change',renderList)});
+  function fly(btn){
+    countEl.classList.remove('bump'); void countEl.offsetWidth; countEl.classList.add('bump');
+    if(reduce.matches||!Element.prototype.animate)return;
+    var src=btn.querySelector('svg.item').getBoundingClientRect(), dst=countEl.getBoundingClientRect();
+    var c=btn.querySelector('svg.item').cloneNode(true); c.setAttribute('class','fly'); c.style.cssText+=btn.getAttribute('style')+';left:'+src.left+'px;top:'+src.top+'px;width:'+src.width+'px;height:'+src.height+'px';
+    body.appendChild(c);
+    var dx=dst.left+dst.width/2-(src.left+src.width/2), dy=dst.top+dst.height/2-(src.top+src.height/2);
+    c.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+dx*0.5+'px,'+(dy*0.5-80)+'px) scale(.7) rotate(-20deg)',opacity:1,offset:.5},{transform:'translate('+dx+'px,'+dy+'px) scale(.15) rotate(-40deg)',opacity:.3}],{duration:650,easing:'cubic-bezier(.3,.7,.4,1)'}).onfinish=function(){c.remove()};
+  }
+  Object.keys(prods).forEach(function(k){prods[k].addEventListener('click',function(){set(k,(bag[k]||0)+1);fly(prods[k])})});
+  renderList();
+
+  /* the sideways shop window (desktop) + bus line progress */
+  var street=document.getElementById('street'), sticky=document.getElementById('sticky'), track=document.getElementById('track');
+  var stopsWrap=document.getElementById('stopsWrap'), busIcon=document.getElementById('busIcon');
+  var links=[].slice.call(document.querySelectorAll('#stops a'));
+  var panes=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var mq=window.matchMedia('(min-width:1024px) and (min-height:640px) and (prefers-reduced-motion:no-preference)');
+  var pinned=false, maxX=0, ticking=false;
+  function layout(){
+    pinned=mq.matches;
+    html.style.setProperty('--banner-h',document.querySelector('.banner').offsetHeight+'px');
+    html.classList.toggle('pinned',pinned);
+    if(pinned){
+      maxX=Math.max(0,track.scrollWidth-window.innerWidth);
+      street.style.setProperty('--street-h',(maxX+window.innerHeight)+'px');
+    }else{track.style.transform='';street.style.removeProperty('--street-h')}
+    update();
+  }
+  function paneTarget(i){ // scrollY that brings pane i into view
+    if(pinned) return street.offsetTop+Math.min(maxX,panes[i].offsetLeft);
+    return panes[i].getBoundingClientRect().top+window.scrollY-document.querySelector('.bus').offsetHeight;
+  }
+  function update(){
+    ticking=false;
+    var cur=0, prog=0;
+    if(pinned){
+      var x=Math.max(0,Math.min(maxX,window.scrollY-street.offsetTop));
+      track.style.transform='translate3d('+(-x)+'px,0,0)';
+      sticky.scrollLeft=0;
+      prog=maxX?x/maxX:0;
+      panes.forEach(function(p,i){if(p.offsetLeft-window.innerWidth*0.45<=x)cur=i});
+    }else{
+      var h=document.documentElement.scrollHeight-window.innerHeight; prog=h>0?window.scrollY/h:0;
+      panes.forEach(function(p,i){if(p.getBoundingClientRect().top<window.innerHeight*0.4)cur=i});
+    }
+    links.forEach(function(a,i){a.classList.toggle('cur',i===cur)});
+    var ol=document.getElementById('stops');
+    var w=ol.scrollWidth-34; busIcon.style.transform='translateX('+Math.max(0,Math.min(w,prog*w))+'px)';
+    if(!pinned){var a=links[cur]; var l=a.parentNode.offsetLeft-stopsWrap.clientWidth/2+a.offsetWidth/2; if(Math.abs(stopsWrap.scrollLeft-l)>30)stopsWrap.scrollLeft=l}
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
+  window.addEventListener('resize',layout);
+  if(mq.addEventListener)mq.addEventListener('change',layout);
+  links.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:paneTarget(i),behavior:reduce.matches?'auto':'smooth'});panes[i].setAttribute('tabindex','-1');panes[i].focus({preventScroll:true})})});
+  countEl.addEventListener('click',function(e){e.preventDefault();links[5].click()});
+  // keyboard focus inside an off-screen pane: bring the pane into view
+  track.addEventListener('focusin',function(e){
+    if(!pinned)return; var p=e.target.closest('.pane'); if(!p)return;
+    var x=window.scrollY-street.offsetTop;
+    if(p.offsetLeft<x||p.offsetLeft+p.offsetWidth>x+window.innerWidth){window.scrollTo({top:street.offsetTop+Math.min(maxX,p.offsetLeft),behavior:'auto'})}
+    sticky.scrollLeft=0;
+  });
+  layout();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+})();
+</script>
+</body>
+</html>

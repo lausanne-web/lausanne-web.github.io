@@ -1,10 +1,81 @@
 {
   "_about": "Design registry for lausanne-web demos. The builder reads this before designing and appends one entry per new demo. A new demo must not repeat the archetype of the last 6 entries, and must differ from every entry in at least 4 of: archetype, nav, hero, palette_family, display_font, signature.",
   "demos": [
-    {"slug":"grin-et-cie","date":"2026-11-23","archetype":"classic-landing","nav":"top bar","hero":"giant type + cut-out product","palette_family":"blue/amber","display_font":"Gloock","body_font":"Work Sans","signature":"3D tilt hero + pinned horizontal product panels"},
-    {"slug":"maison-lecointre","date":"2026-11-24","archetype":"classic-landing","nav":"top bar","hero":"giant serif type + photo","palette_family":"cocoa/praline dark","display_font":"Fraunces","body_font":"Manrope","signature":"drag-to-spin Paris-Brest plate"},
-    {"slug":"retouches-et-couture","date":"2026-11-25","archetype":"classic-landing","nav":"top bar","hero":"giant serif type + photo","palette_family":"chalk/charcoal/red","display_font":"Bodoni Moda","body_font":"Karla","signature":"drag-the-hem trousers + tape-measure marquee"},
-    {"slug":"best-barber-lausanne","date":"2026-11-25","archetype":"classic-landing","nav":"top bar","hero":"condensed type + photo","palette_family":"bottle green/brass dark","display_font":"Big Shoulders Display","body_font":"Instrument Sans","signature":"draggable barber pole"},
-    {"slug":"cafe-contemplation","date":"2026-11-25","archetype":"object (postcard stack)","nav":"perforated stamp rail (right) / stamp strip (mobile bottom)","hero":"flippable illustrated postcard + rotating postmark","palette_family":"lake teal/apricot/cream","display_font":"Shrikhand","body_font":"Instrument Sans + Caveat","signature":"press-and-hold milk pour draws latte-art tulip","effects":["magicui spinning-text","magicui noise-texture"],"order_button":"WhatsApp takeaway picker"}
+    {
+      "slug": "grin-et-cie",
+      "date": "2026-11-23",
+      "archetype": "classic-landing",
+      "nav": "top bar",
+      "hero": "giant type + cut-out product",
+      "palette_family": "blue/amber",
+      "display_font": "Gloock",
+      "body_font": "Work Sans",
+      "signature": "3D tilt hero + pinned horizontal product panels"
+    },
+    {
+      "slug": "maison-lecointre",
+      "date": "2026-11-24",
+      "archetype": "classic-landing",
+      "nav": "top bar",
+      "hero": "giant serif type + photo",
+      "palette_family": "cocoa/praline dark",
+      "display_font": "Fraunces",
+      "body_font": "Manrope",
+      "signature": "drag-to-spin Paris-Brest plate"
+    },
+    {
+      "slug": "retouches-et-couture",
+      "date": "2026-11-25",
+      "archetype": "classic-landing",
+      "nav": "top bar",
+      "hero": "giant serif type + photo",
+      "palette_family": "chalk/charcoal/red",
+      "display_font": "Bodoni Moda",
+      "body_font": "Karla",
+      "signature": "drag-the-hem trousers + tape-measure marquee"
+    },
+    {
+      "slug": "best-barber-lausanne",
+      "date": "2026-11-25",
+      "archetype": "classic-landing",
+      "nav": "top bar",
+      "hero": "condensed type + photo",
+      "palette_family": "bottle green/brass dark",
+      "display_font": "Big Shoulders Display",
+      "body_font": "Instrument Sans",
+      "signature": "draggable barber pole"
+    },
+    {
+      "slug": "cafe-contemplation",
+      "date": "2026-11-25",
+      "archetype": "object (postcard stack)",
+      "nav": "perforated stamp rail (right) / stamp strip (mobile bottom)",
+      "hero": "flippable illustrated postcard + rotating postmark",
+      "palette_family": "lake teal/apricot/cream",
+      "display_font": "Shrikhand",
+      "body_font": "Instrument Sans + Caveat",
+      "signature": "press-and-hold milk pour draws latte-art tulip",
+      "effects": [
+        "magicui spinning-text",
+        "magicui noise-texture"
+      ],
+      "order_button": "WhatsApp takeaway picker"
+    },
+    {
+      "slug": "epicerie-latine-lausanne",
+      "date": "2026-11-26",
+      "archetype": "shop-window",
+      "nav": "bus-line stops strip (fixed bottom desktop / sticky top mobile) with moving bus progress",
+      "hero": "illustrated CSS storefront: awning, painted window lettering, door with live open/closed sign",
+      "palette_family": "jungle green/marigold/hibiscus",
+      "display_font": "Bungee",
+      "body_font": "Figtree + Patrick Hand",
+      "signature": "tap shelf products to drop them into a kraft paper bag that builds the WhatsApp list",
+      "effects": [
+        "magicui striped-pattern",
+        "magicui marquee"
+      ],
+      "order_button": "WhatsApp shopping-list picker"
+    }
   ]
 }
