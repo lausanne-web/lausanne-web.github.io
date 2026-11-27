@@ -92,6 +92,22 @@
         "magicui blur-fade"
       ],
       "order_button": "Call to order (landline tel:) + list-to-dictate picker"
+    },
+    {
+      "slug": "cordonnerie-de-la-sallaz",
+      "date": "2026-11-27",
+      "archetype": "scrollytelling",
+      "nav": "left-gutter waxed-thread stitch line with knot links (desktop) / stitched progress bar + step label (mobile)",
+      "hero": "pinned workshop stage: line-drawn worn shoe on pattern grid + embossed leather label, hero text as first step card",
+      "palette_family": "veg-tan/oxblood/cobalt stitch",
+      "display_font": "Alfa Slab One",
+      "body_font": "Bricolage Grotesque",
+      "signature": "scroll repairs one shoe in 6 steps (diagnose, resole, heel, welt stitch, polish, ticket) + rub-to-polish shine meter",
+      "effects": [
+        "magicui scroll-progress",
+        "magicui text-reveal"
+      ],
+      "order_button": "WhatsApp repair-request picker (item + problem + day)"
     }
   ]
 }
