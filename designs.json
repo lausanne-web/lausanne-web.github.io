@@ -108,6 +108,22 @@
         "magicui text-reveal"
       ],
       "order_button": "WhatsApp repair-request picker (item + problem + day)"
+    },
+    {
+      "slug": "fleurs-de-saint-roch",
+      "date": "2026-11-27",
+      "archetype": "index-list",
+      "nav": "swinging kraft gift-tag button (fixed top-right) opening a full-screen typographic sommaire overlay",
+      "hero": "giant serif typographic index of occasions/flowers; desktop hover = photo card follows cursor, tap = inline photo panel",
+      "palette_family": "paper/stem green/poppy",
+      "display_font": "Instrument Serif",
+      "body_font": "Hanken Grotesk",
+      "signature": "tap stems to grow an SVG bouquet in kraft paper + write the gift card live, builds a summary to read out when calling",
+      "effects": [
+        "magicui word-rotate",
+        "magicui number-ticker"
+      ],
+      "order_button": "Call to order (landline tel:) + bouquet composer summary"
     }
   ]
 }

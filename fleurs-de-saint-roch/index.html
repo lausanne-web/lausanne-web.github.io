@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Fleurs de Saint-Roch — fleuriste, rue Saint-Roch, Lausanne (maquette)</title>
+<meta name="description" content="Maquette non officielle pour Fleurs de Saint-Roch, fleuriste à la rue Saint-Roch 6, Lausanne : bouquets, roses, plantes, mariages, deuil.">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --paper:#F3EEE4; --paper2:#EAE2D3; --ink:#1E2B22; --ink2:#4A5448; --poppy:#C4432B; --poppy-d:#A8341F;
+  --blush:#E9B9A7; --stem:#5F7A4A; --pollen:#D8A53C; --kraft:#C9A57A; --kraft-d:#A9835A;
+  --serif:'Instrument Serif',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif;
+  --gut:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+[data-en]{display:none} body.en [data-fr]{display:none} body.en [data-en]{display:revert}
+a{color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--poppy);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* banner */
+.banner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px var(--gut);background:var(--ink);color:var(--paper);font-size:13px;letter-spacing:.02em}
+.banner p{margin:0}
+.lang{flex:none;border:1px solid rgba(243,238,228,.5);background:transparent;color:var(--paper);border-radius:99px;padding:3px 12px;font-size:12px;font-weight:700;letter-spacing:.08em;cursor:pointer;min-height:30px}
+.lang:hover{background:var(--paper);color:var(--ink)}
+
+/* swinging gift-tag nav */
+.tag{position:fixed;top:52px;right:clamp(10px,3vw,40px);z-index:40;border:0;background:none;padding:0;cursor:pointer;transform-origin:50% 0;width:92px;height:118px}
+.tag svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 8px rgba(30,43,34,.18))}
+.tag .lbl{position:absolute;left:14px;right:14px;top:68px;text-align:center;font-family:var(--serif);font-style:italic;font-size:16px;line-height:1;color:var(--ink)}
+.tag .lbl small{display:block;font-family:var(--sans);font-style:normal;font-size:9px;letter-spacing:.18em;text-transform:uppercase;margin-top:5px;color:var(--ink2)}
+@media (prefers-reduced-motion:no-preference){
+  .tag{animation:swing 3.6s ease-in-out 1s 2}
+  .tag:hover{animation:swing 1.4s ease-in-out infinite}
+}
+@keyframes swing{0%,100%{transform:rotate(0)}25%{transform:rotate(7deg)}75%{transform:rotate(-6deg)}}
+
+/* sommaire overlay */
+.som{position:fixed;inset:0;z-index:60;background:var(--ink);color:var(--paper);padding:clamp(70px,10vh,110px) var(--gut) 40px;overflow-y:auto;display:none}
+.som.open{display:block}
+.som ol{list-style:none;margin:0;padding:0;counter-reset:s}
+.som li{border-top:1px solid rgba(243,238,228,.2)}
+.som li:last-child{border-bottom:1px solid rgba(243,238,228,.2)}
+.som a{display:flex;align-items:baseline;gap:18px;padding:10px 0;text-decoration:none;font-family:var(--serif);font-size:clamp(2.2rem,7vw,5.6rem);line-height:1.05}
+.som a span.n{font-family:var(--sans);font-size:13px;letter-spacing:.14em;color:var(--blush);min-width:28px}
+.som a:hover{color:var(--blush);font-style:italic}
+.som .close{position:absolute;top:18px;right:var(--gut);border:1px solid rgba(243,238,228,.5);background:none;color:var(--paper);border-radius:99px;padding:8px 18px;cursor:pointer;min-height:44px}
+.som .foot{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:15px;color:rgba(243,238,228,.8)}
+.som .foot a{font-family:var(--sans);font-size:15px;display:inline;padding:0;text-decoration:underline}
+
+/* masthead + index */
+.mast{padding:clamp(28px,5vw,56px) var(--gut) clamp(40px,6vw,80px);position:relative}
+.mrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;padding-right:110px;font-size:14px;color:var(--ink2);text-transform:uppercase;letter-spacing:.12em}
+.mrow b{color:var(--ink);font-weight:700}
+.status{display:inline-flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:14px;color:var(--ink);background:#fff8;border:1px solid #1e2b2226;border-radius:99px;padding:4px 12px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ink2)}
+.status.on i{background:#3E8E4E;box-shadow:0 0 0 4px #3e8e4e33}
+.status.off i{background:var(--poppy)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,6.4vw,6rem);line-height:.95;margin:clamp(22px,4vw,48px) 0 6px;letter-spacing:-.01em;padding-right:100px}
+h1 em{color:var(--poppy)}
+.lede{max-width:56ch;margin:0 0 clamp(26px,4vw,48px);color:var(--ink2);font-size:clamp(16px,1.4vw,19px)}
+.idx{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.idx>li{border-bottom:1px solid #1e2b2240}
+.row{display:grid;grid-template-columns:clamp(34px,5vw,80px) minmax(0,1fr) auto;align-items:baseline;gap:12px;width:100%;background:none;border:0;padding:clamp(6px,1vw,12px) clamp(72px,9vw,120px) clamp(6px,1vw,12px) 0;text-align:left;cursor:pointer}
+.row .n{font-size:13px;letter-spacing:.14em;color:var(--ink2);font-variant-numeric:tabular-nums}
+.row .t{font-family:var(--serif);font-size:clamp(2.1rem,7vw,7.2rem);line-height:1;letter-spacing:-.015em;transition:color .25s,transform .35s cubic-bezier(.2,.7,.2,1)}
+.row .t i{font-style:italic;color:var(--stem)}
+.row .k{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+.row .k::after{content:"+";display:inline-block;margin-left:8px;font-size:20px;line-height:0;transition:transform .3s}
+.row[aria-expanded="true"] .k::after{transform:rotate(45deg)}
+@media (hover:hover){.row:hover .t{color:var(--poppy);transform:translateX(14px)}}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(16px,3vw,40px);align-items:start;padding:6px 0 26px clamp(34px,5vw,80px)}
+.js .panel{display:none}
+.js .open>.panel{display:grid}
+.panel figure{margin:0}
+.panel img,.float img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--paper2);border-radius:2px}
+figcaption{font-size:12px;color:var(--ink2);margin-top:6px;letter-spacing:.02em}
+.panel p{margin:0 0 10px;max-width:46ch;font-size:17px}
+.panel .note{font-size:14px;color:var(--ink2)}
+.float{position:fixed;left:0;top:0;width:300px;z-index:30;pointer-events:none;opacity:0;transform:translate3d(-999px,-999px,0);transition:opacity .2s;background:var(--paper);padding:10px 10px 8px;box-shadow:0 18px 40px rgba(30,43,34,.22);rotate:-2deg}
+.float.on{opacity:1}
+.float p{margin:8px 2px 0;font-size:14px;line-height:1.4}
+.after{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:end;margin-top:clamp(28px,4vw,52px)}
+.rot{font-family:var(--serif);font-size:clamp(1.8rem,3.6vw,3.4rem);line-height:1.1;margin:0}
+.rot .w{display:inline-block;color:var(--poppy);font-style:italic;min-width:6ch}
+.rot .w.out{opacity:0;transform:translateY(.5em)}
+.rot .w.pre{opacity:0;transform:translateY(-.5em);transition:none}
+@media (prefers-reduced-motion:no-preference){.rot .w{transition:opacity .25s ease-out,transform .25s ease-out}}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:99px;border:1.5px solid var(--ink);text-decoration:none;font-weight:700;font-size:16px;cursor:pointer;background:transparent;transition:background .2s,color .2s,transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--poppy);border-color:var(--poppy)}
+.btn:not(.solid):hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* generic section */
+section{position:relative}
+.sec{padding:clamp(56px,8vw,120px) var(--gut)}
+.kick{display:flex;align-items:baseline;gap:14px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:0 0 14px}
+.kick span{font-variant-numeric:tabular-nums;color:var(--poppy-d);font-weight:700}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,5.4vw,5rem);line-height:1;margin:0 0 18px;letter-spacing:-.01em}
+h2 em{color:var(--stem)}
+
+/* composer */
+.comp{background:var(--paper2)}
+.cgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);align-items:start;margin-top:30px}
+.stems{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:8px 14px 8px 9px;border-radius:99px;border:1.5px solid #1e2b2240;background:var(--paper);cursor:pointer;font-size:15px;transition:border-color .2s,transform .12s}
+.chip:hover{border-color:var(--ink)}
+.chip:active{transform:scale(.96)}
+.chip .dot{width:22px;height:22px;border-radius:50%;flex:none;border:1px solid #0002}
+.chip .c{font-variant-numeric:tabular-nums;font-size:13px;color:var(--ink2);min-width:2ch}
+.fld{display:block;margin-top:18px}
+.fld>span{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg label>span{display:inline-flex;align-items:center;min-height:42px;padding:8px 14px;border-radius:8px;border:1.5px solid #1e2b2240;background:var(--paper);font-size:15px}
+.seg input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.seg input:focus-visible+span{outline:2px solid var(--poppy);outline-offset:2px}
+input[type=date],select,textarea{width:100%;font:inherit;font-size:16px;padding:10px 12px;border-radius:8px;border:1.5px solid #1e2b2240;background:var(--paper);color:var(--ink)}
+textarea{resize:vertical;min-height:84px}
+.stage{background:var(--paper);border-radius:4px;padding:10px;position:relative}
+.stage svg{width:100%;height:auto;display:block}
+.stage .cnt{position:absolute;left:14px;top:10px;font-size:13px;color:var(--ink2)}
+.stage .reset{position:absolute;right:10px;top:8px;border:0;background:none;text-decoration:underline;font-size:14px;cursor:pointer;min-height:36px;color:var(--ink2)}
+.bl{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:no-preference){.bl.new{animation:pop .45s cubic-bezier(.2,1.4,.4,1)}}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.card{background:#FFFDF8;border-radius:3px;padding:22px 22px 18px;box-shadow:0 10px 26px rgba(30,43,34,.14);rotate:1.5deg;position:relative;margin-bottom:22px}
+.card::before{content:"";position:absolute;top:-9px;left:50%;width:58px;height:18px;margin-left:-29px;background:#e9b9a7cc;rotate:-3deg}
+.card .to{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.card .msg{font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.2;min-height:2.4em;margin:8px 0 4px;overflow-wrap:anywhere}
+.card .sig{text-align:right;font-family:var(--serif);font-size:18px;color:var(--poppy-d)}
+.sum{background:var(--ink);color:var(--paper);border-radius:4px;padding:18px}
+.sum h3{margin:0 0 8px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--blush)}
+.sum p{margin:0 0 14px;font-size:15px;line-height:1.5}
+.sum .btn{border-color:var(--paper);color:var(--paper)}
+.sum .btn.solid{background:var(--poppy);border-color:var(--poppy)}
+.sum .btn.solid:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.sum .btn:not(.solid):hover{background:var(--paper);color:var(--ink)}
+.sum small{display:block;margin-top:12px;font-size:13px;color:#f3eee4cc}
+
+/* atelier */
+.at{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:start}
+.at .year{font-family:var(--serif);font-size:clamp(6rem,19vw,17rem);line-height:.8;color:var(--poppy);letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:0}
+.at .year small{display:block;font-family:var(--sans);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:18px;line-height:1.4}
+.at p{font-size:clamp(17px,1.5vw,20px);max-width:52ch;margin:0 0 16px}
+.at .big{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.6rem);line-height:1.15;margin-bottom:22px}
+
+/* avis */
+.avis{background:var(--ink);color:var(--paper)}
+.avis .kick{color:#f3eee4b3}.avis .kick span{color:var(--blush)}
+.avis h2 em{color:var(--blush)}
+.picks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,2vw,26px);align-items:start;margin-top:34px}
+.pick{position:relative;padding-bottom:70px}
+.pick::after{content:"";position:absolute;left:50%;bottom:0;width:3px;height:80px;margin-left:-1.5px;background:linear-gradient(var(--kraft),var(--kraft-d));border-radius:2px}
+.pick .cd{position:relative;z-index:1;background:#FFFDF8;color:var(--ink);padding:18px 16px 16px;border-radius:3px;box-shadow:0 12px 24px rgba(0,0,0,.25)}
+.pick:nth-child(odd) .cd{rotate:-2deg}.pick:nth-child(even) .cd{rotate:2deg;margin-top:26px}
+.pick h3{font-family:var(--serif);font-weight:400;font-style:italic;font-size:24px;line-height:1.1;margin:0 0 8px}
+.pick p{margin:0;font-size:15px;line-height:1.45;color:var(--ink2)}
+.src{margin-top:30px;font-size:14px;color:#f3eee4b3}
+
+/* horaires */
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start;margin-top:26px}
+.week{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.week li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:12px 4px;border-bottom:1px solid #1e2b2233;font-size:18px}
+.week li span:last-child{font-variant-numeric:tabular-nums}
+.week li.today{background:#fff9;font-weight:700}
+.week li.today>span[data-fr]::after{content:" · aujourd'hui";font-weight:400;color:var(--poppy-d);font-size:14px}
+.week li.today>span[data-en]::after{content:" · today";font-weight:400;color:var(--poppy-d);font-size:14px}
+.week li.closed span:last-child{color:var(--ink2)}
+.addr{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.1;margin:0 0 14px}
+.contact{list-style:none;padding:0;margin:0 0 20px;font-size:17px}
+.contact li{padding:3px 0}
+.mapbox{height:320px;border:1.5px solid var(--ink);border-radius:3px;overflow:hidden;margin-top:16px;background:var(--paper2)}
+.hnote{font-size:14px;color:var(--ink2);margin-top:12px}
+
+/* ribbon footer */
+footer{background:var(--poppy);color:#FFF7EE;padding:0 0 28px;overflow:hidden}
+.ribbon{display:flex;gap:0;white-space:nowrap;font-family:var(--serif);font-style:italic;font-size:clamp(2rem,5vw,4.2rem);line-height:1;padding:22px 0 18px;border-bottom:1px solid #fff5}
+.ribbon span{padding-right:.6em}
+.fin{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 30px;padding:20px var(--gut) 0;font-size:14px;align-items:start}
+.fin p{margin:0 0 4px}
+.fin a{color:#FFF7EE}
+
+/* responsive */
+@media (max-width:1100px){
+  .cgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .cgrid .col3{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+  .picks{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .tag{width:74px;height:96px;top:46px}
+  .tag .lbl{top:55px;left:11px;right:11px;font-size:13px}
+  .tag .lbl small{font-size:8px}
+  .mrow{padding-right:80px;font-size:12px;gap:6px 14px}
+  h1{padding-right:0}
+  .row{grid-template-columns:30px minmax(0,1fr) auto}
+  .row .k b{display:none}
+  .panel{grid-template-columns:minmax(0,1fr);padding-left:0}
+  .after{grid-template-columns:minmax(0,1fr)}
+  .cgrid,.cgrid .col3,.at,.hgrid{grid-template-columns:minmax(0,1fr)}
+  .picks{grid-template-columns:minmax(0,1fr)}
+  .pick:nth-child(even) .cd{margin-top:0}
+  .pick{padding-bottom:28px}.pick::after{height:40px}
+  .fin{grid-template-columns:minmax(0,1fr)}
+  .mapbox{height:260px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="banner" role="note">
+  <p><span data-fr>Maquette proposée par Felix Hancock — site non officiel</span><span data-en>Proposed mock-up by Felix Hancock — not the official site</span></p>
+  <button class="lang" type="button" id="lang" aria-label="Switch to English">EN</button>
+</div>
+
+<button class="tag" type="button" id="tagBtn" aria-expanded="false" aria-controls="som">
+  <svg viewBox="0 0 92 118" aria-hidden="true">
+    <path d="M46 0 C46 14 44 22 46 34" fill="none" stroke="#C4432B" stroke-width="2"/>
+    <path d="M14 46 L30 30 H62 L78 46 V108 a6 6 0 0 1 -6 6 H20 a6 6 0 0 1 -6 -6 Z" fill="#C9A57A" stroke="#A9835A" stroke-width="1.5"/>
+    <circle cx="46" cy="42" r="5" fill="#F3EEE4" stroke="#A9835A" stroke-width="1.5"/>
+  </svg>
+  <span class="lbl"><span data-fr>Sommaire</span><span data-en>Contents</span><small>menu</small></span>
+</button>
+
+<nav class="som" id="som" aria-label="Sommaire">
+  <button class="close" type="button" id="somClose"><span data-fr>Fermer</span><span data-en>Close</span></button>
+  <ol>
+    <li><a href="#index"><span class="n">01</span><span data-fr>L'index des fleurs</span><span data-en>The flower index</span></a></li>
+    <li><a href="#composer"><span class="n">02</span><span data-fr>Composer un bouquet</span><span data-en>Compose a bouquet</span></a></li>
+    <li><a href="#atelier"><span class="n">03</span><span data-fr>L'atelier</span><span data-en>The shop</span></a></li>
+    <li><a href="#avis"><span class="n">04</span><span data-fr>Ce qu'en disent les clients</span><span data-en>What customers say</span></a></li>
+    <li><a href="#horaires"><span class="n">05</span><span data-fr>Horaires &amp; accès</span><span data-en>Hours &amp; directions</span></a></li>
+  </ol>
+  <div class="foot">
+    <span>Rue Saint-Roch 6, 1004 Lausanne</span>
+    <a href="tel:+41213512526">021 351 25 26</a>
+  </div>
+</nav>
+
+<main>
+<header class="mast" id="index">
+  <div class="mrow">
+    <b>Fleurs de Saint-Roch</b>
+    <span><span data-fr>Fleuriste · Lausanne</span><span data-en>Florist · Lausanne</span></span>
+    <span class="status" id="status"><i></i><span id="statusTxt"><span data-fr>Lun–ven 8h30–18h · sam 8h30–17h</span><span data-en>Mon–Fri 8:30–18:00 · Sat 8:30–17:00</span></span></span>
+  </div>
+
+  <h1><span data-fr>Des fleurs de saison,<br><em>rue Saint-Roch.</em></span><span data-en>Seasonal flowers,<br><em>rue Saint-Roch.</em></span></h1>
+  <p class="lede"><span data-fr>Une petite boutique de fleuriste au cœur de Lausanne : bouquets, roses, plantes et compositions pour les grands et les petits moments. Touchez une ligne pour l'ouvrir.</span><span data-en>A small florist's shop in the heart of Lausanne: bouquets, roses, plants and arrangements for big and small moments. Tap a line to open it.</span></p>
+
+  <ol class="idx" id="idx">
+    <li data-img="https://images.unsplash.com/photo-1779694540389-2e150caf6590?auto=format&fit=crop&w=1600&q=75">
+      <button class="row" type="button" aria-expanded="false"><span class="n">01</span><span class="t"><span data-fr>Bouquets du jour</span><span data-en>Today's bouquets</span></span><span class="k"><b data-fr>Ouvrir</b><b data-en>Open</b></span></button>
+      <div class="panel">
+        <figure><img src="https://images.unsplash.com/photo-1779694540389-2e150caf6590?auto=format&fit=crop&w=1600&q=75" alt="Bouquets colorés emballés, prêts à emporter" width="1600" height="1200" loading="lazy"><figcaption>Photo d'illustration (Unsplash)</figcaption></figure>
+        <div><p data-fr>Des bouquets composés avec des fleurs de saison, à emporter tout de suite ou à commander pour un jour précis. Le choix change avec la saison et l'arrivage.</p><p data-en>Bouquets made with seasonal flowers, to take away now or to order for a given day. The choice changes with the season and the deliveries.</p><p class="note"><span data-fr>Conseil personnalisé en boutique.</span><span data-en>Personal advice in the shop.</span></p></div>
+      </div>
+    </li>
+    <li data-img="https://images.unsplash.com/photo-1776008960929-d44d39dc3389?auto=format&fit=crop&w=1600&q=75">
+      <button class="row" type="button" aria-expanded="false"><span class="n">02</span><span class="t">Roses</span><span class="k"><b data-fr>Ouvrir</b><b data-en>Open</b></span></button>
+      <div class="panel">
+        <figure><img src="https://images.unsplash.com/photo-1776008960929-d44d39dc3389?auto=format&fit=crop&w=1600&q=75" alt="Deux roses rouges avec des gouttes d'eau" width="1600" height="1200" loading="lazy"><figcaption>Photo d'illustration (Unsplash)</figcaption></figure>
+        <div><p data-fr>À l'unité ou en bouquet. D'après les avis Google, les clients parlent de roses splendides, d'une qualité qui se remarque.</p><p data-en>By the stem or in a bouquet. According to Google reviews, customers talk about splendid roses of noticeable quality.</p><p class="note"><span data-fr>Variétés et couleurs selon l'arrivage — à confirmer en boutique.</span><span data-en>Varieties and colours depend on deliveries — ask in the shop.</span></p></div>
+      </div>
+    </li>
+    <li data-img="https://images.unsplash.com/photo-1739526970495-7ae11a28a110?auto=format&fit=crop&w=1600&q=75">
+      <button class="row" type="button" aria-expanded="false"><span class="n">03</span><span class="t"><span data-fr>Plantes</span><span data-en>Plants</span></span><span class="k"><b data-fr>Ouvrir</b><b data-en>Open</b></span></button>
+      <div class="panel">
+        <figure><img src="https://images.unsplash.com/photo-1739526970495-7ae11a28a110?auto=format&fit=crop&w=1600&q=75" alt="Plantes fleuries en pots" width="1600" height="1200" loading="lazy"><figcaption>Photo d'illustration (Unsplash)</figcaption></figure>
+        <div><p data-fr>Des plantes pour la maison ou à offrir, avec les conseils pour bien s'en occuper. Les avis Google saluent la patience et la connaissance des plantes.</p><p data-en>Plants for your home or to give, with advice on how to look after them. Google reviews praise the patience and plant knowledge.</p><p class="note"><span data-fr>Vases et accessoires également en boutique.</span><span data-en>Vases and accessories also in the shop.</span></p></div>
+      </div>
+    </li>
+    <li data-img="https://images.unsplash.com/photo-1687965978758-2ee08d21601a?auto=format&fit=crop&w=1600&q=75">
+      <button class="row" type="button" aria-expanded="false"><span class="n">04</span><span class="t"><span data-fr>Mariages</span><span data-en>Weddings</span></span><span class="k"><b data-fr>Ouvrir</b><b data-en>Open</b></span></button>
+      <div class="panel">
+        <figure><img src="https://images.unsplash.com/photo-1687965978758-2ee08d21601a?auto=format&fit=crop&w=1600&q=75" alt="Bouquet de mariée de roses rouges et blanches" width="1600" height="1200" loading="lazy"><figcaption>Photo d'illustration (Unsplash)</figcaption></figure>
+        <div><p data-fr>Bouquet de mariée, boutonnières, décoration de table&nbsp;: on en parle ensemble, en boutique ou par téléphone, pour imaginer des fleurs qui vous ressemblent.</p><p data-en>Bridal bouquet, buttonholes, table decoration: let's talk it through, in the shop or by phone, and imagine flowers that suit you.</p><p class="note"><span data-fr>Prestations et délais à confirmer avec la fleuriste.</span><span data-en>Services and lead times to be confirmed with the florist.</span></p></div>
+      </div>
+    </li>
+    <li data-img="https://images.unsplash.com/photo-1784689958638-a1f2b02c3e09?auto=format&fit=crop&w=1600&q=75">
+      <button class="row" type="button" aria-expanded="false"><span class="n">05</span><span class="t"><span data-fr>Naissances <i>&amp;</i> anniversaires</span><span data-en>Births <i>&amp;</i> birthdays</span></span><span class="k"><b data-fr>Ouvrir</b><b data-en>Open</b></span></button>
+      <div class="panel">
+        <figure><img src="https://images.unsplash.com/photo-1784689958638-a1f2b02c3e09?auto=format&fit=crop&w=1600&q=75" alt="Bouquet d'œillets roses et blancs dans un papier rose" width="1600" height="1200" loading="lazy"><figcaption>Photo d'illustration (Unsplash)</figcaption></figure>
+        <div><p data-fr>Pour accueillir un bébé, fêter un anniversaire ou simplement dire merci. Ajoutez une petite carte avec votre message.</p><p data-en>To welcome a baby, celebrate a birthday or simply say thank you. Add a little card with your message.</p><p class="note"><span data-fr>Livraison à Lausanne et environs&nbsp;: à confirmer.</span><span data-en>Delivery in Lausanne and nearby: to be confirmed.</span></p></div>
+      </div>
+    </li>
+    <li data-img="https://images.unsplash.com/photo-1785671927614-7abe1789bdab?auto=format&fit=crop&w=1600&q=75">
+      <button class="row" type="button" aria-expanded="false"><span class="n">06</span><span class="t"><span data-fr>Deuil <i>&amp;</i> hommages</span><span data-en>Funerals <i>&amp;</i> tributes</span></span><span class="k"><b data-fr>Ouvrir</b><b data-en>Open</b></span></button>
+      <div class="panel">
+        <figure><img src="https://images.unsplash.com/photo-1785671927614-7abe1789bdab?auto=format&fit=crop&w=1600&q=75" alt="Roses blanches et orangées côte à côte" width="1600" height="1200" loading="lazy"><figcaption>Photo d'illustration (Unsplash)</figcaption></figure>
+        <div><p data-fr>Arrangements, gerbes et paniers pour un dernier adieu. D'après les avis Google, les familles ont trouvé ici de l'écoute et de la gentillesse dans un moment difficile.</p><p data-en>Arrangements, sprays and baskets for a last farewell. According to Google reviews, families found a listening ear and kindness here at a difficult time.</p><p class="note"><span data-fr>Le plus simple&nbsp;: appeler la boutique.</span><span data-en>Easiest: call the shop.</span></p></div>
+      </div>
+    </li>
+  </ol>
+
+  <div class="after">
+    <!-- Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (word-rotate) -->
+    <p class="rot"><span data-fr>Des fleurs pour <span class="w" data-words="un mariage|dire merci|une naissance|un anniversaire|un dernier adieu|soi, tout simplement">un mariage</span></span><span data-en>Flowers for <span class="w" data-words="a wedding|saying thank you|a new baby|a birthday|a last farewell|yourself, simply">a wedding</span></span></p>
+    <div class="ctas">
+      <a class="btn solid" href="tel:+41213512526"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span data-fr>Appeler · 021 351 25 26</span><span data-en>Call · 021 351 25 26</span></a>
+      <a class="btn" href="#composer"><span data-fr>Composer un bouquet</span><span data-en>Compose a bouquet</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="float" id="float" aria-hidden="true"><img alt="" width="300" height="225"><p></p></div>
+
+<section class="sec comp" id="composer" aria-labelledby="h-comp">
+  <p class="kick"><span>02</span><span data-fr>Commander à l'avance</span><span data-en>Order ahead</span></p>
+  <h2 id="h-comp"><span data-fr>Composez, <em>puis appelez.</em></span><span data-en>Compose, <em>then call.</em></span></h2>
+  <p class="lede" style="margin-bottom:0"><span data-fr>Touchez les fleurs pour esquisser vos envies, écrivez le mot de la petite carte, puis appelez la boutique&nbsp;: votre résumé est prêt à être lu. Les fleurs exactes dépendent de la saison — la fleuriste vous conseille.</span><span data-en>Tap the flowers to sketch what you'd like, write the little card, then call the shop: your summary is ready to read out. The exact flowers depend on the season — the florist will advise you.</span></p>
+
+  <div class="cgrid">
+    <div>
+      <div class="fld"><span><span data-fr>1 · Vos envies</span><span data-en>1 · What you'd like</span></span>
+        <div class="stems" id="stems"></div>
+      </div>
+      <div class="fld"><span><span data-fr>2 · Taille</span><span data-en>2 · Size</span></span>
+        <div class="seg" role="radiogroup" id="size">
+          <label><input type="radio" name="size" value="petit" checked><span><span data-fr>Petit</span><span data-en>Small</span></span></label>
+          <label><input type="radio" name="size" value="moyen"><span><span data-fr>Moyen</span><span data-en>Medium</span></span></label>
+          <label><input type="radio" name="size" value="généreux"><span><span data-fr>Généreux</span><span data-en>Generous</span></span></label>
+        </div>
+      </div>
+      <label class="fld"><span><span data-fr>3 · Occasion</span><span data-en>3 · Occasion</span></span>
+        <select id="occ">
+          <option value="">—</option>
+          <option value="anniversaire">Anniversaire · Birthday</option>
+          <option value="naissance">Naissance · Birth</option>
+          <option value="remerciement">Remerciement · Thank you</option>
+          <option value="mariage">Mariage · Wedding</option>
+          <option value="deuil">Deuil · Funeral</option>
+          <option value="pour le plaisir">Pour le plaisir · Just because</option>
+        </select>
+      </label>
+      <label class="fld"><span><span data-fr>4 · Pour le</span><span data-en>4 · For</span></span><input type="date" id="date"></label>
+    </div>
+
+    <div class="stage">
+      <span class="cnt" id="cnt" aria-live="polite">0</span>
+      <button type="button" class="reset" id="reset"><span data-fr>Recommencer</span><span data-en>Start over</span></button>
+      <svg viewBox="0 0 300 360" role="img" aria-labelledby="bqT" id="bq">
+        <title id="bqT">Esquisse du bouquet / bouquet sketch</title>
+        <g id="gStems" stroke="#5F7A4A" stroke-width="2" stroke-linecap="round" fill="none"></g>
+        <path d="M78 196 L150 352 L222 196 Z" fill="#B99368"/>
+        <g id="gBlooms"></g>
+        <path d="M60 188 Q150 170 240 188 L170 350 Q150 356 130 350 Z" fill="#C9A57A" stroke="#A9835A" stroke-width="1.5"/>
+        <path d="M150 182 L150 352 M104 186 L140 350 M196 186 L160 350" stroke="#A9835A" stroke-width="1" opacity=".55"/>
+        <path d="M118 286 Q150 300 182 286 M126 296 Q150 310 174 296" fill="none" stroke="#C4432B" stroke-width="3"/>
+        <path d="M150 300 q-26 10 -30 30 M150 300 q26 10 30 30" fill="none" stroke="#C4432B" stroke-width="3" stroke-linecap="round"/>
+        <text x="150" y="120" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="20" fill="#4A5448" id="bqHint">touchez une fleur…</text>
+      </svg>
+    </div>
+
+    <div class="col3">
+      <div>
+        <label class="fld" style="margin-top:0"><span><span data-fr>5 · Le mot de la carte</span><span data-en>5 · Card message</span></span><textarea id="msg" maxlength="140" placeholder="Joyeux anniversaire&nbsp;!"></textarea></label>
+        <div class="card" style="margin-top:24px">
+          <div class="to"><span data-fr>Petite carte</span><span data-en>Little card</span></div>
+          <p class="msg" id="msgOut">…</p>
+          <div class="sig">Fleurs de Saint-Roch</div>
+        </div>
+      </div>
+      <div class="sum">
+        <h3><span data-fr>À lire au téléphone</span><span data-en>Read this out on the phone</span></h3>
+        <p id="sumTxt">—</p>
+        <div class="ctas">
+          <a class="btn solid" href="tel:+41213512526"><span data-fr>Appeler pour commander</span><span data-en>Call to order</span></a>
+          <button class="btn" type="button" id="copy"><span data-fr>Copier</span><span data-en>Copy</span></button>
+        </div>
+        <small><span data-fr>Pas de prix ni de paiement en ligne · paiement sur place. Merci de prévoir un peu d'avance&nbsp;: délais à confirmer avec la boutique.</span><span data-en>No prices or online payment · pay in store. Please order a little ahead: lead times to be confirmed with the shop.</span></small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="atelier" aria-labelledby="h-at">
+  <p class="kick"><span>03</span><span data-fr>L'atelier</span><span data-en>The shop</span></p>
+  <div class="at">
+    <div>
+      <h2 id="h-at" class="sr"><span data-fr>L'atelier</span><span data-en>The shop</span></h2>
+      <!-- Effect adapted from Magic UI (MIT) — see /assets/vendor/LICENSE-magicui.txt (number-ticker) -->
+      <p class="year"><span id="tick" data-to="2002">2002</span><small><span data-fr>inscrite au registre du commerce</span><span data-en>listed in the commercial register</span></small></p>
+    </div>
+    <div>
+      <p class="big"><span data-fr>Une boutique de quartier, rue Saint-Roch, où l'on vient chercher un bouquet… et un vrai conseil.</span><span data-en>A neighbourhood shop on rue Saint-Roch, where you come for a bouquet… and real advice.</span></p>
+      <p><span data-fr>Fleurs de Saint-Roch est la boutique de la fleuriste Catherine Francfort. On y trouve des fleurs fraîches choisies selon la saison, des plantes, des vases et des compositions pour toutes les occasions.</span><span data-en>Fleurs de Saint-Roch is florist Catherine Francfort's shop. You'll find fresh flowers chosen with the seasons, plants, vases and arrangements for every occasion.</span></p>
+      <p><span data-fr>Dites pour qui, pour quand et ce que vous aimez&nbsp;: le bouquet se construit avec vous.</span><span data-en>Tell us who it's for, when, and what you like: the bouquet is built with you.</span></p>
+      <div class="ctas"><a class="btn" href="#horaires"><span data-fr>Passer à la boutique</span><span data-en>Visit the shop</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec avis" id="avis" aria-labelledby="h-avis">
+  <p class="kick"><span>04</span><span data-fr>D'après les avis Google</span><span data-en>From Google reviews</span></p>
+  <h2 id="h-avis"><span data-fr>Ce que disent <em>les clients.</em></span><span data-en>What customers <em>say.</em></span></h2>
+  <div class="picks">
+    <div class="pick"><div class="cd"><h3><span data-fr>L'accueil</span><span data-en>The welcome</span></h3><p><span data-fr>Un accueil chaleureux et souriant revient dans beaucoup d'avis.</span><span data-en>A warm, smiling welcome comes up in many reviews.</span></p></div></div>
+    <div class="pick"><div class="cd"><h3><span data-fr>Le conseil</span><span data-en>The advice</span></h3><p><span data-fr>On prend le temps de conseiller, avec patience et une bonne connaissance des plantes.</span><span data-en>Time is taken to advise, with patience and good plant knowledge.</span></p></div></div>
+    <div class="pick"><div class="cd"><h3><span data-fr>La qualité</span><span data-en>The quality</span></h3><p><span data-fr>Des fleurs de qualité — les roses en particulier sont citées comme splendides.</span><span data-en>Quality flowers — the roses in particular are called splendid.</span></p></div></div>
+    <div class="pick"><div class="cd"><h3><span data-fr>Les compositions</span><span data-en>The arrangements</span></h3><p><span data-fr>De belles créations, colorées et soignées, pour un prix jugé correct.</span><span data-en>Beautiful, colourful, careful arrangements at a price customers find fair.</span></p></div></div>
+    <div class="pick"><div class="cd"><h3><span data-fr>Les attentions</span><span data-en>Little touches</span></h3><p><span data-fr>De petits gestes qui marquent, et de la délicatesse dans les moments difficiles.</span><span data-en>Small, memorable gestures, and tact at difficult times.</span></p></div></div>
+  </div>
+  <p class="src"><span data-fr>Thèmes résumés d'après les avis Google (note 4,5/5 sur 26 avis, novembre 2026). Aucun avis n'est cité mot pour mot.</span><span data-en>Themes summarised from Google reviews (4.5/5 from 26 reviews, November 2026). No review is quoted word for word.</span></p>
+</section>
+
+<section class="sec" id="horaires" aria-labelledby="h-hor">
+  <p class="kick"><span>05</span><span data-fr>Horaires &amp; accès</span><span data-en>Hours &amp; directions</span></p>
+  <h2 id="h-hor"><span data-fr>Passez <em>nous voir.</em></span><span data-en>Come <em>and see us.</em></span></h2>
+  <div class="hgrid">
+    <div>
+      <ul class="week" id="week">
+        <li data-d="1"><span data-fr>Lundi</span><span data-en>Monday</span><span>8:30 – 18:00</span></li>
+        <li data-d="2"><span data-fr>Mardi</span><span data-en>Tuesday</span><span>8:30 – 18:00</span></li>
+        <li data-d="3"><span data-fr>Mercredi</span><span data-en>Wednesday</span><span>8:30 – 18:00</span></li>
+        <li data-d="4"><span data-fr>Jeudi</span><span data-en>Thursday</span><span>8:30 – 18:00</span></li>
+        <li data-d="5"><span data-fr>Vendredi</span><span data-en>Friday</span><span>8:30 – 18:00</span></li>
+        <li data-d="6"><span data-fr>Samedi</span><span data-en>Saturday</span><span>8:30 – 17:00</span></li>
+        <li data-d="0" class="closed"><span data-fr>Dimanche</span><span data-en>Sunday</span><span><span data-fr>Fermé</span><span data-en>Closed</span></span></li>
+      </ul>
+      <p class="hnote"><span data-fr>Horaires d'après la fiche Google. Jours fériés et vacances&nbsp;: à confirmer.</span><span data-en>Hours from the Google listing. Public holidays and closures: to be confirmed.</span></p>
+    </div>
+    <div>
+      <p class="addr">Rue Saint-Roch 6<br>1004 Lausanne</p>
+      <ul class="contact">
+        <li><a href="tel:+41213512526">021 351 25 26</a></li>
+        <li><a href="mailto:fleurs.st-roch@bluewin.ch">fleurs.st-roch@bluewin.ch</a></li>
+      </ul>
+      <div class="ctas">
+        <a class="btn solid" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rue%20Saint-Roch%206%2C%201004%20Lausanne" target="_blank" rel="noopener"><span data-fr>Itinéraire</span><span data-en>Directions</span></a>
+        <a class="btn" href="tel:+41213512526"><span data-fr>Appeler</span><span data-en>Call</span></a>
+      </div>
+      <div class="mapbox">
+        <button type="button" class="map-consent" data-src="https://maps.google.com/maps?q=Rue%20Saint-Roch%206%2C%201004%20Lausanne&output=embed" data-title="Carte : Rue Saint-Roch 6, Lausanne"><b><span data-fr>Afficher la carte</span><span data-en>Show the map</span></b><small><span data-fr>La carte est chargée depuis Google Maps seulement si vous cliquez.</span><span data-en>The map loads from Google Maps only when you click.</span></small></button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="ribbon" aria-hidden="true"><span>Fleurs de Saint-Roch ✿</span><span>Rue Saint-Roch 6 ✿</span><span>Lausanne ✿</span><span>Fleurs de Saint-Roch ✿</span><span>Rue Saint-Roch 6 ✿</span></div>
+  <div class="fin">
+    <div>
+      <p><b>Fleurs de Saint-Roch</b> · Rue Saint-Roch 6, 1004 Lausanne · <a href="tel:+41213512526">021 351 25 26</a></p>
+      <p><span data-fr>Maquette proposée par Felix Hancock — site non officiel. Photos d'illustration (Unsplash), pas de photos de la boutique.</span><span data-en>Proposed mock-up by Felix Hancock — not the official site. Illustration photos (Unsplash), not photos of the shop.</span></p>
+    </div>
+    <p><span data-fr>Effets adaptés de Magic UI (MIT)</span><span data-en>Effects adapted from Magic UI (MIT)</span></p>
+  </div>
+</footer>
+
+<style>.map-consent{width:100%;height:100%;min-height:260px;border:0;display:grid;place-items:center;gap:8px;padding:20px;background:repeating-linear-gradient(135deg,rgba(0,0,0,.04) 0 12px,transparent 12px 24px);color:inherit;font:inherit;cursor:pointer;text-align:center}.map-consent b{font-size:17px}.map-consent small{opacity:.7;max-width:34ch}</style>
+<script>document.querySelectorAll('.map-consent').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=b.dataset.src;f.title=b.dataset.title||'Carte';f.loading='lazy';f.style.cssText='width:100%;height:100%;min-height:260px;border:0;display:block';f.referrerPolicy='no-referrer-when-downgrade';b.replaceWith(f)})});</script>
+
+<script>
+(function(){
+  var doc=document.documentElement; doc.classList.add('js');
+  var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var en=false;
+
+  /* language */
+  var langBtn=document.getElementById('lang');
+  langBtn.addEventListener('click',function(){
+    en=!en; document.body.classList.toggle('en',en); doc.lang=en?'en':'fr';
+    langBtn.textContent=en?'FR':'EN'; langBtn.setAttribute('aria-label',en?'Passer en français':'Switch to English');
+    updateStatus(); buildSummary();
+  });
+
+  /* sommaire */
+  var tag=document.getElementById('tagBtn'), som=document.getElementById('som'), somClose=document.getElementById('somClose');
+  function openSom(o){som.classList.toggle('open',o);tag.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';if(o){somClose.focus()}else{tag.focus()}}
+  tag.addEventListener('click',function(){openSom(true)});
+  somClose.addEventListener('click',function(){openSom(false)});
+  som.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){som.classList.remove('open');tag.setAttribute('aria-expanded','false');document.body.style.overflow=''})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&som.classList.contains('open'))openSom(false)});
+
+  /* open / closed (Europe/Zurich) */
+  var H={1:[510,1080],2:[510,1080],3:[510,1080],4:[510,1080],5:[510,1080],6:[510,1020]};
+  function zurichNow(){
+    var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Zurich',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var o={};p.forEach(function(x){o[x.type]=x.value});
+    var d={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday];
+    return {d:d,m:(parseInt(o.hour,10)%24)*60+parseInt(o.minute,10)};
+  }
+  function fmt(m){return Math.floor(m/60)+':'+('0'+m%60).slice(-2)}
+  function updateStatus(){
+    var n=zurichNow(), h=H[n.d], st=document.getElementById('status'), t=document.getElementById('statusTxt'), txt;
+    var li=document.querySelector('#week li[data-d="'+n.d+'"]'); if(li) li.classList.add('today');
+    if(h&&n.m>=h[0]&&n.m<h[1]){st.className='status on';txt=en?'Open now · until '+fmt(h[1]):'Ouvert · jusqu’à '+fmt(h[1]).replace(':','h')}
+    else{
+      st.className='status off';
+      var dd=n.d, k=0, nx=null;
+      if(h&&n.m<h[0]) nx={d:dd,m:h[0]};
+      while(!nx&&k<7){k++;dd=(dd+1)%7;if(H[dd])nx={d:dd,m:H[dd][0]}}
+      var fr=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'], enD=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      var same=nx.d===n.d;
+      txt=en?'Closed · opens '+(same?'today':enD[nx.d])+' at '+fmt(nx.m):'Fermé · ouvre '+(same?'aujourd’hui':fr[nx.d])+' à '+fmt(nx.m).replace(':','h');
+    }
+    t.textContent=txt;
+  }
+  updateStatus(); setInterval(updateStatus,60000);
+
+  /* index rows */
+  var rows=document.querySelectorAll('#idx>li');
+  rows.forEach(function(li){
+    var b=li.querySelector('.row');
+    b.addEventListener('click',function(){var o=!li.classList.contains('open');li.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
+  });
+
+  /* floating preview (desktop, fine pointer) */
+  var fl=document.getElementById('float'), flImg=fl.querySelector('img'), flP=fl.querySelector('p');
+  var fine=window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 900px)');
+  var tx=-999,ty=-999,x=-999,y=-999,raf=null;
+  function loop(){x+=(tx-x)*(RM?1:.18);y+=(ty-y)*(RM?1:.18);fl.style.transform='translate3d('+x+'px,'+y+'px,0)';if(Math.abs(tx-x)>.5||Math.abs(ty-y)>.5){raf=requestAnimationFrame(loop)}else{raf=null}}
+  rows.forEach(function(li){
+    var b=li.querySelector('.row');
+    b.addEventListener('mouseenter',function(e){
+      if(!fine.matches||li.classList.contains('open'))return;
+      flImg.src=li.dataset.img; flImg.alt='';
+      var p=li.querySelector('.panel p[data-'+(en?'en':'fr')+']'); flP.textContent=p?p.textContent:'';
+      if(x<-900){x=e.clientX+24;y=e.clientY-120}
+      fl.classList.add('on');
+    });
+    b.addEventListener('mouseleave',function(){fl.classList.remove('on')});
+    b.addEventListener('click',function(){fl.classList.remove('on')});
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!fine.matches)return;
+    var w=fl.offsetWidth||300, h=fl.offsetHeight||280;
+    tx=Math.min(e.clientX+28,window.innerWidth-w-16); ty=Math.max(12,Math.min(e.clientY-h/2,window.innerHeight-h-12));
+    if(!raf)raf=requestAnimationFrame(loop);
+  });
+
+  /* word-rotate (adapted from Magic UI, MIT) */
+  document.querySelectorAll('.rot .w').forEach(function(w){
+    var words=w.dataset.words.split('|'), i=0;
+    if(RM)return;
+    setInterval(function(){
+      w.classList.add('out');
+      setTimeout(function(){i=(i+1)%words.length;w.textContent=words[i];w.classList.remove('out');w.classList.add('pre');void w.offsetWidth;w.classList.remove('pre')},260);
+    },2600);
+  });
+
+  /* number-ticker (adapted from Magic UI, MIT) */
+  var tick=document.getElementById('tick');
+  if(!RM&&'IntersectionObserver' in window){
+    var to=+tick.dataset.to, from=1950; tick.textContent=from;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.disconnect();
+      var t0=null;function step(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1600);var v=from+(to-from)*(1-Math.pow(1-k,3));tick.textContent=Math.round(v);if(k<1)requestAnimationFrame(step)}requestAnimationFrame(step)})},{threshold:.4});
+    io.observe(tick);
+  }
+
+  /* bouquet composer */
+  var NS='http://www.w3.org/2000/svg';
+  var T=[
+    {id:'rr',fr:'Roses rouges',en:'Red roses',c:'#B3261E'},
+    {id:'rb',fr:'Roses blanches',en:'White roses',c:'#F7F2EA'},
+    {id:'po',fr:'Fleurs rose poudré',en:'Blush flowers',c:'#E9B9A7'},
+    {id:'pb',fr:'Petites fleurs blanches',en:'Small white flowers',c:'#FFFFFF'},
+    {id:'ja',fr:'Une touche de jaune',en:'A touch of yellow',c:'#D8A53C'},
+    {id:'fe',fr:'Feuillage',en:'Greenery',c:'#5F7A4A'}
+  ];
+  var counts={}, order=[], MAX=18;
+  var slots=[[150,112],[122,124],[178,124],[150,82],[100,148],[200,148],[128,94],[172,94],[150,140],[84,176],[216,176],[110,72],[190,72],[124,154],[176,154],[150,58],[96,112],[204,112]];
+  var stemsEl=document.getElementById('stems'), gS=document.getElementById('gStems'), gB=document.getElementById('gBlooms'), hint=document.getElementById('bqHint'), cnt=document.getElementById('cnt');
+  T.forEach(function(t){
+    counts[t.id]=0;
+    var b=document.createElement('button');b.type='button';b.className='chip';b.dataset.id=t.id;
+    b.innerHTML='<span class="dot" style="background:'+t.c+'"></span><span data-fr>'+t.fr+'</span><span data-en>'+t.en+'</span><span class="c">0</span>';
+    b.setAttribute('aria-label',t.fr+' / '+t.en+' : +1');
+    b.addEventListener('click',function(){add(t.id)});
+    stemsEl.appendChild(b);
+  });
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+  function bloom(id,x,y){
+    var g=el('g',{'class':'bl new',transform:''});
+    if(id==='rr'||id==='rb'){var f=id==='rr'?'#B3261E':'#F7F2EA',s=id==='rr'?'#7E1712':'#CFC5B3';
+      g.appendChild(el('circle',{cx:x,cy:y,r:15,fill:f,stroke:s,'stroke-width':1.2}));
+      g.appendChild(el('path',{d:'M'+(x-6)+' '+y+' a6 6 0 1 1 6 6 a3.5 3.5 0 1 1 -3.5 -3.5',fill:'none',stroke:s,'stroke-width':1.4}));}
+    else if(id==='po'){for(var a=0;a<6;a++){var an=a*Math.PI/3;g.appendChild(el('circle',{cx:x+Math.cos(an)*9,cy:y+Math.sin(an)*9,r:9,fill:'#E9B9A7',stroke:'#C98E79','stroke-width':1}))}g.appendChild(el('circle',{cx:x,cy:y,r:6,fill:'#D8A53C'}))}
+    else if(id==='pb'){[[0,0],[-9,-4],[9,-5],[-5,8],[6,8],[0,-11]].forEach(function(p){g.appendChild(el('circle',{cx:x+p[0],cy:y+p[1],r:4.2,fill:'#fff',stroke:'#cfc5b3','stroke-width':.8}))})}
+    else if(id==='ja'){[[0,0],[-7,-6],[7,-6],[-4,7],[5,6]].forEach(function(p){g.appendChild(el('circle',{cx:x+p[0],cy:y+p[1],r:5,fill:'#D8A53C',stroke:'#B4842A','stroke-width':.8}))})}
+    else {[-35,0,35].forEach(function(r){g.appendChild(el('ellipse',{cx:x,cy:y-10,rx:6,ry:15,fill:'#5F7A4A',transform:'rotate('+r+' '+x+' '+(y+4)+')'}))})}
+    return g;
+  }
+  function render(){
+    gS.innerHTML='';gB.innerHTML='';
+    order.forEach(function(id,i){var s=slots[i];gS.appendChild(el('path',{d:'M150 330 Q'+((150+s[0])/2)+' '+(s[1]+120)+' '+s[0]+' '+(s[1]+8)}));var b=bloom(id,s[0],s[1]);if(i<order.length-1)b.setAttribute('class','bl');gB.appendChild(b)});
+    hint.style.display=order.length?'none':'';
+    cnt.textContent=order.length+' / '+MAX;
+    stemsEl.querySelectorAll('.chip').forEach(function(b){b.querySelector('.c').textContent=counts[b.dataset.id]});
+    buildSummary();
+  }
+  function add(id){if(order.length>=MAX)return;counts[id]++;order.push(id);render()}
+  document.getElementById('reset').addEventListener('click',function(){order=[];for(var k in counts)counts[k]=0;render()});
+
+  var msg=document.getElementById('msg'), msgOut=document.getElementById('msgOut'), occ=document.getElementById('occ'), date=document.getElementById('date');
+  try{var d0=new Date();d0.setDate(d0.getDate()+1);date.min=new Date().toISOString().slice(0,10)}catch(e){}
+  function size(){var r=document.querySelector('input[name=size]:checked');return r?r.value:'petit'}
+  function buildSummary(){
+    var parts=T.filter(function(t){return counts[t.id]}).map(function(t){return (en?t.en:t.fr).toLowerCase()});
+    var s=en?'Hello, I would like to order a '+({petit:'small',moyen:'medium','généreux':'generous'}[size()])+' bouquet':'Bonjour, je voudrais commander un bouquet '+size();
+    if(date.value){var dd=new Date(date.value+'T12:00:00');s+=(en?' for ':' pour le ')+dd.toLocaleDateString(en?'en-GB':'fr-CH',{weekday:'long',day:'numeric',month:'long'})}
+    if(occ.value)s+=en?' (occasion: '+occ.value+')':' (occasion : '+occ.value+')';
+    s+=parts.length?(en?', with '+parts.join(', '):', avec '+parts.join(', ')):(en?', you choose the flowers':', selon votre choix de fleurs de saison');
+    s+='.';
+    if(msg.value.trim())s+=en?' Card: “'+msg.value.trim()+'”.':' Carte : « '+msg.value.trim()+' ».';
+    s+=en?' (seen on your website)':' (vu sur votre site)';
+    document.getElementById('sumTxt').textContent=s;
+    msgOut.textContent=msg.value.trim()||'…';
+    return s;
+  }
+  [msg,occ,date].forEach(function(e){e.addEventListener('input',buildSummary)});
+  document.querySelectorAll('input[name=size]').forEach(function(r){r.addEventListener('change',buildSummary)});
+  var copy=document.getElementById('copy');
+  copy.addEventListener('click',function(){
+    var s=buildSummary();
+    function done(){var o=copy.innerHTML;copy.textContent=en?'Copied ✓':'Copié ✓';setTimeout(function(){copy.innerHTML=o},1600)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(done,done)}else{var ta=document.createElement('textarea');ta.value=s;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();done()}
+  });
+  render();
+})();
+</script>
+</body>
+</html>
